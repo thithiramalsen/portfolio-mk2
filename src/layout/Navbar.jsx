@@ -32,9 +32,11 @@ export const Navbar = () => {
       <nav className="container mx-auto px-6 flex items-center justify-between">
         <a
           href="#"
-          className="text-xl font-bold tracking-tight hover:text-primary"
+          className="flex items-center gap-1.5 text-xl font-bold tracking-tight hover:text-primary"
         >
-          TM<span className="text-primary">.</span>
+          <span className="text-primary text-2xl leading-none">&lt;</span>
+          <span className="uppercase tracking-[0.4em] text-sm">TM</span>
+          <span className="text-primary text-2xl leading-none">/&gt;</span>
         </a>
 
         {/* Desktop Nav */}

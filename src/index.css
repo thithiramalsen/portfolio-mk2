@@ -96,6 +96,263 @@
       inset 0 0 20px color-mix(in srgb, var(--color-primary) 10%, transparent);
   }
 
+  .hero-gradient {
+    background:
+      radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--color-highlight) 18%, transparent) 0%, transparent 42%),
+      radial-gradient(circle at 78% 8%, color-mix(in srgb, var(--color-primary) 22%, transparent) 0%, transparent 48%),
+      radial-gradient(circle at 86% 78%, color-mix(in srgb, var(--color-highlight) 16%, transparent) 0%, transparent 40%),
+      linear-gradient(180deg, color-mix(in srgb, var(--color-muted) 65%, transparent) 0%, transparent 100%);
+    opacity: 0.9;
+    filter: saturate(115%);
+  }
+
+  .hero-noise {
+    background-image:
+      radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.06) 0%, transparent 55%),
+      radial-gradient(circle at 82% 70%, rgba(255, 255, 255, 0.04) 0%, transparent 52%),
+      linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.7) 100%);
+    mix-blend-mode: screen;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--color-surface) 72%, transparent) 0%, color-mix(in srgb, var(--color-primary) 18%, transparent) 100%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 45%, transparent);
+    border-radius: 9999px;
+    padding: 0.6rem 1.4rem;
+    box-shadow: 0 18px 45px color-mix(in srgb, var(--color-primary) 28%, transparent);
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    backdrop-filter: blur(18px);
+  }
+
+  .hero-badge-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--color-primary) 65%, transparent) 0%, transparent 100%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 55%, transparent);
+    box-shadow: 0 0 22px color-mix(in srgb, var(--color-primary) 38%, transparent);
+    color: var(--color-primary-foreground);
+  }
+
+  .hero-stat {
+    min-width: 9rem;
+    padding: 1.15rem 1.35rem;
+    border-radius: 1.5rem;
+    background: linear-gradient(145deg, color-mix(in srgb, var(--color-surface) 88%, transparent) 0%, color-mix(in srgb, var(--color-primary) 16%, transparent) 100%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 32%, transparent);
+    box-shadow: 0 35px 58px color-mix(in srgb, var(--color-primary) 24%, transparent);
+    backdrop-filter: blur(22px);
+  }
+
+  .hero-stat-value {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-primary-foreground);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .hero-stat-label {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--color-muted-foreground) 75%, var(--color-primary-foreground) 25%);
+  }
+
+  .hero-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
+    background: color-mix(in srgb, var(--color-surface) 85%, transparent);
+    color: var(--color-muted-foreground);
+    transition: all 0.3s ease;
+    box-shadow: 0 18px 36px color-mix(in srgb, var(--color-primary) 18%, transparent);
+  }
+
+  .hero-social:hover {
+    background: color-mix(in srgb, var(--color-primary) 25%, transparent);
+    color: var(--color-primary-foreground);
+    border-color: color-mix(in srgb, var(--color-primary) 45%, transparent);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--color-primary) 35%, transparent);
+  }
+
+  .hero-orb {
+    position: absolute;
+    inset: -14% -16% -10% -10%;
+    border-radius: 50% / 45%;
+    background: radial-gradient(circle at 45% 45%, color-mix(in srgb, var(--color-primary) 38%, transparent) 0%, transparent 68%);
+    filter: blur(72px);
+    opacity: 0.8;
+    animation: orb-pulse 14s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .segmented-frame {
+    position: relative;
+    padding: 1.2rem;
+    border-radius: 2.25rem;
+  }
+
+  .segmented-frame::before {
+    /* Removed rotating conic ring; using corner segments instead */
+    display: none;
+  }
+
+  .segmented-frame::after {
+    content: "";
+    position: absolute;
+    inset: -0.45rem;
+    border-radius: inherit;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 32%, transparent);
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  .segmented-frame > .inner {
+    position: relative;
+    z-index: 2;
+    border-radius: inherit;
+    overflow: hidden;
+    padding: 0.75rem;
+    background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+    backdrop-filter: blur(12px);
+    box-shadow: inset 0 0 18px color-mix(in srgb, var(--color-primary) 12%, transparent);
+  }
+
+  .segmented-frame {
+    --seg-offset: 12px;
+  }
+
+  .border-segments {
+    position: absolute;
+    inset: calc(-1 * var(--seg-offset));
+    z-index: 3;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .border-segment {
+    position: absolute;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--color-primary) 85%, transparent), transparent);
+    border-radius: 4px;
+    will-change: transform, opacity;
+    opacity: 0.95;
+  }
+
+  /* Top-left */
+  .seg-tl-h { top: calc(-1 * var(--seg-offset)); left: 18px; height: 4px; width: 30%; transform-origin: left; transform: scaleX(0); animation: drawX .6s ease forwards .18s; }
+  .seg-tl-v { top: 18px; left: calc(-1 * var(--seg-offset)); width: 4px; height: 30%; transform-origin: top; transform: scaleY(0); animation: drawY .6s ease forwards .28s; }
+
+  /* Top-right */
+  .seg-tr-h { top: calc(-1 * var(--seg-offset)); right: 18px; height: 4px; width: 30%; transform-origin: right; transform: scaleX(0); animation: drawX .6s ease forwards .22s; }
+  .seg-tr-v { top: 18px; right: calc(-1 * var(--seg-offset)); width: 4px; height: 30%; transform-origin: top; transform: scaleY(0); animation: drawY .6s ease forwards .32s; }
+
+  /* Bottom-left */
+  .seg-bl-h { bottom: calc(-1 * var(--seg-offset)); left: 18px; height: 4px; width: 30%; transform-origin: left; transform: scaleX(0); animation: drawX .6s ease forwards .26s; }
+  .seg-bl-v { bottom: 18px; left: calc(-1 * var(--seg-offset)); width: 4px; height: 30%; transform-origin: bottom; transform: scaleY(0); animation: drawY .6s ease forwards .36s; }
+
+  /* Bottom-right */
+  .seg-br-h { bottom: calc(-1 * var(--seg-offset)); right: 18px; height: 4px; width: 30%; transform-origin: right; transform: scaleX(0); animation: drawX .6s ease forwards .30s; }
+  .seg-br-v { bottom: 18px; right: calc(-1 * var(--seg-offset)); width: 4px; height: 30%; transform-origin: bottom; transform: scaleY(0); animation: drawY .6s ease forwards .40s; }
+
+  @keyframes drawX {
+    from { transform: scaleX(0); opacity: 0; }
+    to { transform: scaleX(1); opacity: 1; }
+  }
+
+  @keyframes drawY {
+    from { transform: scaleY(0); opacity: 0; }
+    to { transform: scaleY(1); opacity: 1; }
+  }
+
+  .hero-tech-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 20px color-mix(in srgb, var(--color-primary) 20%, transparent));
+    background: color-mix(in srgb, var(--color-surface) 85%, transparent);
+    padding: 6px;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
+  }
+
+  .hero-floating-card {
+    position: absolute;
+    padding: 0.95rem 1.3rem;
+    border-radius: 1.15rem;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--color-surface) 82%, transparent) 0%, color-mix(in srgb, var(--color-primary) 18%, transparent) 100%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 38%, transparent);
+    box-shadow: 0 28px 60px color-mix(in srgb, var(--color-primary) 25%, transparent);
+    backdrop-filter: blur(20px);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .hero-floating-card--top-left {
+    top: -1.9rem;
+    left: -1.9rem;
+    animation-delay: 0.2s;
+  }
+
+  .hero-floating-card--bottom-right {
+    bottom: -1.7rem;
+    right: -1.7rem;
+    animation-delay: 0.6s;
+  }
+
+  .hero-tech-panel {
+    position: absolute;
+    bottom: -3.2rem;
+    right: 0;
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.85rem 1.25rem;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--color-surface) 82%, transparent) 0%, color-mix(in srgb, var(--color-primary) 18%, transparent) 100%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 32%, transparent);
+    box-shadow: 0 24px 60px color-mix(in srgb, var(--color-primary) 24%, transparent);
+    backdrop-filter: blur(18px);
+    align-items: center;
+  }
+
+  .hero-tech-pill {
+    border-radius: 9999px;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    background: color-mix(in srgb, var(--color-primary) 18%, transparent);
+    color: var(--color-primary-foreground);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 32%, transparent);
+  }
+
+  @media (max-width: 1023px) {
+    .hero-tech-panel {
+      position: relative;
+      bottom: auto;
+      right: auto;
+      margin-top: 2.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-tech-pill {
+      letter-spacing: 0.22em;
+    }
+  }
+
   .status-success {
     background-color: color-mix(
       in srgb,
@@ -219,6 +476,18 @@ section[id="contact"] > .container {
     }
   }
 
+  @keyframes orb-pulse {
+    0%,
+    100% {
+      transform: scale(0.92) translateY(0);
+      opacity: 0.75;
+    }
+    50% {
+      transform: scale(1.05) translateY(-14px);
+      opacity: 1;
+    }
+  }
+
   @keyframes marquee {
     0% {
       transform: translateX(0);
@@ -277,6 +546,15 @@ section[id="contact"] > .container {
     }
   }
 
+  @keyframes segmented-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
   .group:hover .animated-border-path {
     animation: animated-border 1.5s linear infinite;
   }
@@ -291,5 +569,58 @@ section[id="contact"] > .container {
     box-shadow: 0 0 40px
         color-mix(in srgb, var(--color-primary) 35%, transparent),
       0 0 80px color-mix(in srgb, var(--color-primary) 25%, transparent);
+  }
+
+  /* Rotating gradient ring for profile images (thin border only) */
+  .rotating-border {
+    --thickness: 8px;
+    position: relative;
+    display: inline-block;
+    border-radius: 1.25rem;
+  }
+
+  /* conic gradient sits behind the inner content; inner covers the center so only a ring is visible */
+  .rotating-border::before {
+    content: "";
+    position: absolute;
+    inset: calc(-1 * var(--thickness));
+    z-index: 1;
+    border-radius: calc(1.25rem + var(--thickness));
+    background: conic-gradient(
+      from 0deg,
+      color-mix(in srgb, var(--color-primary) 70%, transparent) 0deg,
+      color-mix(in srgb, var(--color-highlight) 80%, transparent) 90deg,
+      color-mix(in srgb, var(--color-primary) 60%, transparent) 180deg,
+      color-mix(in srgb, var(--color-highlight) 60%, transparent) 270deg,
+      color-mix(in srgb, var(--color-primary) 70%, transparent) 360deg
+    );
+    background-size: 200% 200%;
+    pointer-events: none;
+    /* subtle glow */
+    filter: saturate(120%);
+    animation: spin-ring 12s linear infinite;
+  }
+
+  /* inner container covers center so only the border ring shows */
+  .rotating-border > .inner {
+    position: relative;
+    z-index: 3;
+    border-radius: inherit;
+    overflow: hidden;
+    background: var(--color-surface);
+    padding: calc(var(--thickness) + 4px);
+  }
+
+  /* Non-linear spin that eases and briefly speeds around corner points */
+  @keyframes spin-ring {
+    0% { transform: rotate(0deg); }
+    18% { transform: rotate(70deg); }
+    25% { transform: rotate(100deg); }
+    43% { transform: rotate(170deg); }
+    50% { transform: rotate(200deg); }
+    68% { transform: rotate(270deg); }
+    75% { transform: rotate(300deg); }
+    93% { transform: rotate(350deg); }
+    100% { transform: rotate(360deg); }
   }
 }
