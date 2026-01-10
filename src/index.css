@@ -289,6 +289,52 @@
     border: 1px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
   }
 
+  /* Fireflies / floating dots */
+  .hero-fireflies {
+    z-index: 6;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .hero-fireflies::before,
+  .hero-fireflies::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  /* Create multiple floating dots using generated elements via pseudo elements and extra spans (JS-free) */
+  .hero-fireflies .firefly { display: block; position: absolute; border-radius: 9999px; opacity: 0.95; transform: translate3d(0,0,0); }
+
+  /* We'll place 12 dots with varying positions */
+  .hero-fireflies .firefly:nth-child(1)  { width:6px; height:6px; left:6%;  top:18%;  background: #ff3b3b; animation: fly 8s ease-in-out infinite 0s, flicker .9s linear infinite; }
+  .hero-fireflies .firefly:nth-child(2)  { width:4px; height:4px; left:22%; top:25%;  background: #ffd74d; animation: fly 10s ease-in-out infinite .6s, flicker .8s linear infinite; }
+  .hero-fireflies .firefly:nth-child(3)  { width:5px; height:5px; left:40%; top:12%;  background: #ff3b3b; animation: fly 9s ease-in-out infinite .3s, flicker 1.1s linear infinite; }
+  .hero-fireflies .firefly:nth-child(4)  { width:4px; height:4px; left:60%; top:22%;  background: #ffd74d; animation: fly 11s ease-in-out infinite .9s, flicker .7s linear infinite; }
+  .hero-fireflies .firefly:nth-child(5)  { width:6px; height:6px; left:82%; top:10%;  background: #ff3b3b; animation: fly 7.5s ease-in-out infinite .2s, flicker .95s linear infinite; }
+  .hero-fireflies .firefly:nth-child(6)  { width:5px; height:5px; left:12%; top:64%;  background: #ffd74d; animation: fly 12s ease-in-out infinite 0s, flicker .85s linear infinite; }
+  .hero-fireflies .firefly:nth-child(7)  { width:4px; height:4px; left:30%; top:70%;  background: #ff3b3b; animation: fly 9.5s ease-in-out infinite .4s, flicker .9s linear infinite; }
+  .hero-fireflies .firefly:nth-child(8)  { width:5px; height:5px; left:48%; top:78%;  background: #ffd74d; animation: fly 10.5s ease-in-out infinite .7s, flicker .77s linear infinite; }
+  .hero-fireflies .firefly:nth-child(9)  { width:4px; height:4px; left:68%; top:66%;  background: #ff3b3b; animation: fly 8.5s ease-in-out infinite .5s, flicker .88s linear infinite; }
+  .hero-fireflies .firefly:nth-child(10) { width:6px; height:6px; left:86%; top:56%;  background: #ffd74d; animation: fly 13s ease-in-out infinite .2s, flicker 1.05s linear infinite; }
+  .hero-fireflies .firefly:nth-child(11) { width:5px; height:5px; left:72%; top:30%;  background: #ff3b3b; animation: fly 9.9s ease-in-out infinite .15s, flicker .9s linear infinite; }
+  .hero-fireflies .firefly:nth-child(12) { width:4px; height:4px; left:52%; top:40%;  background: #ffd74d; animation: fly 11.7s ease-in-out infinite .45s, flicker .95s linear infinite; }
+
+  @keyframes fly {
+    0% { transform: translateY(0) translateX(0) scale(1); opacity: .9 }
+    25% { transform: translateY(-6px) translateX(4px) scale(.95); opacity: .7 }
+    50% { transform: translateY(0) translateX(-3px) scale(1.05); opacity: 1 }
+    75% { transform: translateY(6px) translateX(2px) scale(.9); opacity: .75 }
+    100% { transform: translateY(0) translateX(0) scale(1); opacity: .9 }
+  }
+
+  @keyframes flicker {
+    0% { opacity: 1; filter: drop-shadow(0 0 8px currentColor); }
+    50% { opacity: .35; filter: drop-shadow(0 0 2px currentColor); }
+    100% { opacity: 1; filter: drop-shadow(0 0 8px currentColor); }
+  }
+
   .hero-floating-card {
     position: absolute;
     padding: 0.95rem 1.3rem;

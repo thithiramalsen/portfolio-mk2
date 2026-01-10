@@ -35,6 +35,20 @@ export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0 hero-gradient" />
+      <div className="absolute inset-0 hero-fireflies pointer-events-none" aria-hidden="true">
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+      </div>
       <div className="absolute inset-0 hero-noise" aria-hidden="true" />
 
       <div className="container mx-auto px-6 pt-32 pb-24 relative z-10">
