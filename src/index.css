@@ -1,26 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Roboto+Condensed:wght@300;400;500;700&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0f1418;
-  --color-foreground: #f0f2f5;
+  --color-background: #060707;
+  --color-foreground: #f7f5f2;
 
-  --color-card: #141a1f;
+  --color-card: #101214;
 
-  --color-primary: #20b2a6;
-  --color-primary-foreground: #ffffff;
+  --color-primary: #8f0d12;
+  --color-primary-foreground: #fbeaea;
 
-  --color-secondary: #1f2830;
-  --color-secondary-foreground: #20b2a6;
+  --color-secondary: #14161b;
+  --color-secondary-foreground: #e94545;
 
-  --color-muted: #252e37;
-  --color-muted-foreground: #7a8491;
+  --color-muted: #1b1d21;
+  --color-muted-foreground: #8f9096;
 
-  --color-border: #242b32;
+  --color-border: #2b2d33;
 
   --radius: 0.75rem;
 
-  --color-highlight: #f5a623;
-  --color-surface: #1a2329;
+  --color-highlight: #ff4c35;
+  --color-surface: #121317;
 }
 
 @layer base {
@@ -34,38 +35,148 @@
 
   body {
     background-color: var(--color-background);
+    background-image: 
+      radial-gradient(circle at 8% 15%, color-mix(in srgb, var(--color-primary) 10%, transparent) 0%, transparent 28%),
+      radial-gradient(circle at 85% 78%, color-mix(in srgb, var(--color-highlight) 6%, transparent) 0%, transparent 24%),
+      linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.55) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     color: var(--color-foreground);
-    font-family: "Inter", sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Cinzel", serif;
+    letter-spacing: 0.04em;
   }
 
   .font-serif {
-    font-family: "Playfair Display", serif;
+    font-family: "Cinzel", serif;
   }
 }
 
 @layer components {
   .glass {
-    background-color: color-mix(in srgb, var(--color-surface) 50%, transparent);
+    background-color: color-mix(
+      in srgb,
+      var(--color-surface) 65%,
+      color-mix(in srgb, var(--color-primary) 10%, transparent)
+    );
     backdrop-filter: blur(16px);
-    border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 25%, transparent);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--color-primary) 12%, transparent);
   }
 
   .glass-strong {
-    background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
+    background-color: color-mix(
+      in srgb,
+      var(--color-surface) 80%,
+      color-mix(in srgb, var(--color-primary) 20%, transparent)
+    );
     backdrop-filter: blur(24px);
-    border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 35%, transparent);
+    box-shadow: 0 0 32px color-mix(in srgb, var(--color-primary) 18%, transparent);
   }
 
   .glow-text {
-    text-shadow: 0 0 30px
-      color-mix(in srgb, var(--color-primary) 50%, transparent);
+    text-shadow: 0 0 36px
+      color-mix(in srgb, var(--color-primary) 60%, transparent);
   }
 
   .glow-border {
     box-shadow: 0 0 20px
-        color-mix(in srgb, var(--color-primary) 20%, transparent),
-      inset 0 0 20px color-mix(in srgb, var(--color-primary) 5%, transparent);
+        color-mix(in srgb, var(--color-primary) 25%, transparent),
+      inset 0 0 20px color-mix(in srgb, var(--color-primary) 10%, transparent);
   }
+
+  .status-success {
+    background-color: color-mix(
+      in srgb,
+      var(--color-primary) 18%,
+      transparent
+    );
+    border: 1px solid color-mix(in srgb, var(--color-primary) 45%, transparent);
+    color: color-mix(
+      in srgb,
+      var(--color-primary-foreground) 35%,
+      var(--color-primary) 65%
+    );
+  }
+
+  .status-error {
+    background-color: color-mix(
+      in srgb,
+      var(--color-highlight) 22%,
+      transparent
+    );
+    border: 1px solid color-mix(in srgb, var(--color-highlight) 55%, transparent);
+    color: color-mix(
+      in srgb,
+      var(--color-foreground) 25%,
+      var(--color-highlight) 75%
+    );
+  }
+}
+
+/* Section gradient overlays for Batman mood */
+section[id="about"],
+section[id="projects"],
+section[id="experience"],
+section[id="testimonials"],
+section[id="contact"] {
+  position: relative;
+}
+
+section[id="about"]::before,
+section[id="projects"]::before,
+section[id="experience"]::before,
+section[id="testimonials"]::before,
+section[id="contact"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* subtle local vignette/glow only — global background provides the larger atmosphere */
+  background-image: radial-gradient(
+      circle at 12% 22%,
+      color-mix(in srgb, var(--color-primary) 6%, transparent) 0%,
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 88% 78%,
+      color-mix(in srgb, var(--color-highlight) 5%, transparent) 0%,
+      transparent 26%
+    );
+  opacity: 0.95;
+  filter: blur(28px);
+  mix-blend-mode: normal;
+}
+
+/* Map small utility glows to CSS variables */
+.bg-primary\/5 {
+  background-color: color-mix(in srgb, var(--color-primary) 5%, transparent) !important;
+}
+
+.bg-highlight\/5 {
+  background-color: color-mix(in srgb, var(--color-highlight) 5%, transparent) !important;
+}
+
+/* Ensure container content sits above overlays */
+section[id="about"] > .container,
+section[id="projects"] > .container,
+section[id="experience"] > .container,
+section[id="testimonials"] > .container,
+section[id="contact"] > .container {
+  position: relative;
+  z-index: 10;
 }
 
 @layer utilities {
@@ -171,9 +282,9 @@
   }
 
   .animated-border:hover {
-    background-color: color-mix(in srgb, #26c4b8 15%, transparent);
+    background-color: color-mix(in srgb, var(--color-primary) 25%, transparent);
     backdrop-filter: blur(16px);
-    box-shadow: 0 0 20px color-mix(in srgb, #26c4b8 20%, transparent);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--color-primary) 25%, transparent);
   }
 
   .timeline-glow {

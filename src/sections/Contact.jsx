@@ -193,8 +193,8 @@ export const Contact = () => {
                   className={`flex items-center gap-3
                      p-4 rounded-xl ${
                        submitStatus.type === "success"
-                         ? "bg-green-500/10 border border-green-500/20 text-green-400"
-                         : "bg-red-500/10 border border-red-500/20 text-red-400"
+                         ? "status-success"
+                         : "status-error"
                      }`}
                 >
                   {submitStatus.type === "success" ? (
@@ -238,7 +238,7 @@ export const Contact = () => {
             {/* Availability Card */}
             <div className="glass rounded-3xl p-8 border border-primary/30">
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                <span className="w-3 h-3 bg-primary rounded-full animate-pulse" />
                 <span className="font-medium">Currently Available</span>
               </div>
               <p className="text-muted-foreground text-sm">

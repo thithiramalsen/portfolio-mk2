@@ -47,9 +47,10 @@ export const Hero = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(30)].map((_, i) => (
           <div
-            className="absolute w-1.5 h-1.5 rounded-full opacity-60"
+            key={i}
+            className="absolute w-1.5 h-1.5 rounded-full opacity-70"
             style={{
-              backgroundColor: "#20B2A6",
+              backgroundColor: "var(--color-primary)",
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animation: `slow-drift ${
@@ -67,7 +68,7 @@ export const Hero = () => {
           {/* Left Column - Text Content */}
           <div className="space-y-8">
             <div className="animate-fade-in">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs tracking-[0.3em] uppercase text-primary">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                 Software Engineer • React Specialist
               </span>
@@ -80,7 +81,7 @@ export const Hero = () => {
                 <br />
                 experiences with
                 <br />
-                <span className="font-serif italic font-normal text-white">
+                <span className="font-serif italic font-normal text-primary-foreground/80">
                   precision.
                 </span>
               </h1>
@@ -140,7 +141,7 @@ export const Hero = () => {
                 {/* Floating Badge */}
                 <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float">
                   <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                    <div className="w-3 h-3 bg-primary rounded-full animate-pulse" />
                     <span className="text-sm font-medium">
                       Available for work
                     </span>
