@@ -13,6 +13,7 @@ import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 const heroStats = [
   { value: "5+", label: "Years Experience" },
   { value: "45+", label: "Projects Delivered" },
+  { value: "15+", label: "Technologies" },
   { value: "94%", label: "Client Satisfaction" },
 ];
 
