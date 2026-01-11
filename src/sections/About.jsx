@@ -1,5 +1,6 @@
 import { Code2, Lightbulb, Rocket, Users } from "lucide-react";
 import * as SiIcons from "react-icons/si";
+import { useEffect, useRef } from "react";
 
 const highlights = [
   {
@@ -28,6 +29,71 @@ const highlights = [
 ];
 
 export const About = () => {
+  // ticker components live inside the About component file for simplicity
+  const TickerMarquee = () => {
+    const trackRef = useRef(null);
+
+    useEffect(() => {
+      const el = trackRef.current;
+      if (!el) return;
+
+      const setAnim = () => {
+        // total width contains two concatenated sets; singleWidth is one pass
+        const total = el.scrollWidth;
+        const single = Math.floor(total / 2);
+        // speed in px/sec (tweakable) -> faster speed lower value
+        const speed = 110; // px per second
+        const duration = Math.max(14, Math.round(single / speed));
+        el.style.setProperty("--ticker-distance", `-${single}px`);
+        el.style.setProperty("--ticker-duration", `${duration}s`);
+      };
+
+      setAnim();
+      window.addEventListener("resize", setAnim);
+      return () => window.removeEventListener("resize", setAnim);
+    }, []);
+
+    // prioritized list: backend & infra first, sprinkle front-end in between
+    const techs = [
+      { label: "Node.js", Icon: SiIcons.SiNodedotjs },
+      { label: "FastAPI", Icon: SiIcons.SiFastapi },
+      { label: "MongoDB", Icon: SiIcons.SiMongodb },
+      { label: "SQL", Icon: SiIcons.SiPostgresql },
+      { label: "Python", Icon: SiIcons.SiPython },
+      { label: "LLM APIs", Icon: SiIcons.SiOpenai },
+      { label: "Redis", Icon: SiIcons.SiRedis },
+      { label: "GitHub", Icon: SiIcons.SiGithub },
+      { label: "AWS", Icon: SiIcons.SiAmazonaws },
+      { label: "Azure", Icon: SiIcons.SiMicrosoftazure },
+      { label: "Pandas", Icon: SiIcons.SiPandas },
+      { label: "NumPy", Icon: SiIcons.SiNumpy },
+      { label: "Scikit-learn", Icon: SiIcons.SiScikitlearn },
+      { label: "React.js", Icon: SiIcons.SiReact },
+      { label: "Next.js", Icon: SiIcons.SiNextdotjs },
+      { label: "TypeScript", Icon: SiIcons.SiTypescript },
+      { label: "Tailwind CSS", Icon: SiIcons.SiTailwindcss },
+      { label: "Vite", Icon: SiIcons.SiVite },
+      { label: "Figma", Icon: SiIcons.SiFigma },
+      { label: "JavaScript", Icon: SiIcons.SiJavascript },
+    ];
+
+    return (
+      <div className="ticker">
+        <div className="ticker-track" ref={trackRef}>
+          {techs.concat(techs).map((tech, i) => (
+            <div key={`${tech.label}-${i}`} className="ticker-item flex flex-col items-center justify-center">
+              {tech.Icon ? (
+                <tech.Icon className="text-primary" aria-hidden="true" />
+              ) : (
+                <Code2 className="text-primary" aria-hidden="true" />
+              )}
+              <div className="text-sm font-medium mt-2">{tech.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
   return (
     <section id="about" className="py-32 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
@@ -99,66 +165,7 @@ export const About = () => {
           <div className="mt-8">
             {/* Ticker for md+ screens, keep tech-cards visible on small screens for responsiveness */}
             <div className="hidden md:block">
-              <div className="ticker">
-                <div className="ticker-track">
-                  {(
-                    [
-                      { label: "React.js", Icon: SiIcons.SiReact },
-                      { label: "JavaScript", Icon: SiIcons.SiJavascript },
-                      { label: "TypeScript", Icon: SiIcons.SiTypescript },
-                      { label: "Next.js", Icon: SiIcons.SiNextdotjs },
-                      { label: "Tailwind CSS", Icon: SiIcons.SiTailwindcss },
-                      { label: "Vite", Icon: SiIcons.SiVite },
-                      { label: "FastAPI", Icon: SiIcons.SiFastapi },
-                      { label: "Node.js", Icon: SiIcons.SiNodedotjs },
-                      { label: "REST APIs", Icon: Code2 },
-                      { label: "MongoDB", Icon: SiIcons.SiMongodb },
-                      { label: "SQL", Icon: SiIcons.SiPostgresql },
-                      { label: "LLM APIs", Icon: SiIcons.SiOpenai },
-                      { label: "Python", Icon: SiIcons.SiPython },
-                      { label: "Pandas", Icon: SiIcons.SiPandas },
-                      { label: "NumPy", Icon: SiIcons.SiNumpy },
-                      { label: "Scikit-learn", Icon: SiIcons.SiScikitlearn },
-                      { label: "GitHub", Icon: SiIcons.SiGithub },
-                      { label: "AWS", Icon: SiIcons.SiAmazonaws },
-                      { label: "Azure", Icon: SiIcons.SiMicrosoftazure },
-                      { label: "Figma", Icon: SiIcons.SiFigma },
-                    ]
-                  ).concat(
-                    [
-                      { label: "React.js", Icon: SiIcons.SiReact },
-                      { label: "JavaScript", Icon: SiIcons.SiJavascript },
-                      { label: "TypeScript", Icon: SiIcons.SiTypescript },
-                      { label: "Next.js", Icon: SiIcons.SiNextdotjs },
-                      { label: "Tailwind CSS", Icon: SiIcons.SiTailwindcss },
-                      { label: "Vite", Icon: SiIcons.SiVite },
-                      { label: "FastAPI", Icon: SiIcons.SiFastapi },
-                      { label: "Node.js", Icon: SiIcons.SiNodedotjs },
-                      { label: "REST APIs", Icon: Code2 },
-                      { label: "MongoDB", Icon: SiIcons.SiMongodb },
-                      { label: "SQL", Icon: SiIcons.SiPostgresql },
-                      { label: "LLM APIs", Icon: SiIcons.SiOpenai },
-                      { label: "Python", Icon: SiIcons.SiPython },
-                      { label: "Pandas", Icon: SiIcons.SiPandas },
-                      { label: "NumPy", Icon: SiIcons.SiNumpy },
-                      { label: "Scikit-learn", Icon: SiIcons.SiScikitlearn },
-                      { label: "GitHub", Icon: SiIcons.SiGithub },
-                      { label: "AWS", Icon: SiIcons.SiAmazonaws },
-                      { label: "Azure", Icon: SiIcons.SiMicrosoftazure },
-                      { label: "Figma", Icon: SiIcons.SiFigma },
-                    ]
-                  ).map((tech, i) => (
-                    <div key={`${tech.label}-${i}`} className="ticker-item flex flex-col items-center justify-center">
-                      {tech.Icon ? (
-                        <tech.Icon className="text-primary" aria-hidden="true" />
-                      ) : (
-                        <Code2 className="text-primary" aria-hidden="true" />
-                      )}
-                      <div className="text-sm font-medium mt-2">{tech.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <TickerMarquee />
             </div>
 
             {/* Small screens: keep original responsive tech-cards grid */}
