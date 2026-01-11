@@ -696,6 +696,26 @@
     filter: none;
   }
 
+  /* Make skills/service cards scale on hover (match Skills/Experience behavior) */
+  .skills-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 28px 72px color-mix(in srgb, var(--color-highlight) 36%, transparent), inset 0 0 20px color-mix(in srgb, var(--color-primary) 8%, transparent);
+    border-color: color-mix(in srgb, var(--color-highlight) 36%, transparent);
+  }
+
+  /* Icon behavior inside skills/services cards (match hero icons on hover) */
+  .skill-icon-image {
+    transition: transform .22s cubic-bezier(.2,.9,.2,1), filter .22s ease, color .18s ease;
+    color: color-mix(in srgb, var(--color-foreground) 60%, transparent);
+  }
+
+  .skills-card:hover .skill-icon-image,
+  .skills-card:focus-within .skill-icon-image {
+    transform: translateY(-2px) scale(1.08);
+    color: var(--color-highlight);
+    filter: drop-shadow(0 12px 34px color-mix(in srgb, var(--color-highlight) 40%, transparent));
+  }
+
   /* Experience section tech icons: colored + subtle glow to match skills/hero */
   .exp-tech-icon {
     width: 20px;
@@ -764,6 +784,47 @@
     border: 1px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
     padding: 1rem;
     box-shadow: 0 18px 44px color-mix(in srgb, var(--color-primary) 12%, transparent), inset 0 0 18px color-mix(in srgb, var(--color-primary) 6%, transparent);
+  }
+
+  /* Ensure services cards (which reuse .skills-card) respond to hover even when animated
+     or when inside an overflow-hidden section. Scoped rules increase specificity. */
+  #services .skills-card {
+    will-change: transform, box-shadow;
+    transition: transform .28s ease, box-shadow .28s ease, border-color .18s ease;
+  }
+
+  #services .skills-card:hover,
+  #services .skills-card:focus-within {
+    /* Softer lift and smaller scale for a gentler animation */
+    transform: translateY(-4px) scale(1.015);
+    transition: transform .36s cubic-bezier(.2,.9,.2,1), box-shadow .36s cubic-bezier(.2,.9,.2,1);
+    box-shadow: 0 22px 56px color-mix(in srgb, var(--color-highlight) 30%, transparent), inset 0 0 16px color-mix(in srgb, var(--color-primary) 6%, transparent);
+    border-color: color-mix(in srgb, var(--color-highlight) 28%, transparent);
+  }
+
+  #services .skills-card:hover .skill-icon-image,
+  #services .skills-card:focus-within .skill-icon-image {
+    transform: translateY(-2px) scale(1.08);
+    color: var(--color-highlight);
+    filter: drop-shadow(0 12px 34px color-mix(in srgb, var(--color-highlight) 40%, transparent));
+  }
+
+  /* Force pointer events and higher stacking context to ensure hover is reachable
+     (addresses cases where overlays or animations capture pointer input). */
+  #services .skills-card {
+    pointer-events: auto;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Use higher specificity and !important to override any animation or overlay
+     rules that may block the transform on hover. */
+  #services .skills-card:hover,
+  #services .skills-card:focus-within {
+    /* Keep the override but use the gentler values and smooth easing */
+    transform: translateY(-4px) scale(1.015) !important;
+    transition: transform .36s cubic-bezier(.2,.9,.2,1) !important, box-shadow .36s cubic-bezier(.2,.9,.2,1) !important;
+    z-index: 60 !important;
   }
 
   .skills-card .skill-item { width: 100%; }

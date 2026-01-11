@@ -3,7 +3,9 @@ import { About } from "@/sections/About";
 import { Skills } from "@/sections/Skills";
 import { Projects } from "@/sections/Projects";
 import { Experience } from "@/sections/Experience";
-import { Testimonials } from "@/sections/Testimonials";
+// Testimonials kept for later use
+// import { Testimonials } from "@/sections/Testimonials";
+import { Services } from "@/sections/Services";
 import { Contact } from "@/sections/Contact";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -30,7 +32,7 @@ const Home = () => {
       <Skills />
       <Projects />
       <Experience />
-      <Testimonials />
+      <Services />
       <Contact />
     </>
   );
