@@ -817,6 +817,30 @@
     border-color: color-mix(in srgb, var(--color-primary) 18%, transparent);
   }
 
+  /* About section cards: match hover/glow/scale from Skills & Experience */
+  #about .glass:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 28px 72px color-mix(in srgb, var(--color-highlight) 36%, transparent), inset 0 0 20px color-mix(in srgb, var(--color-primary) 8%, transparent);
+    border-color: color-mix(in srgb, var(--color-highlight) 36%, transparent);
+  }
+
+  #about .glass,
+  #about .glass .w-12 svg {
+    transition: transform .22s cubic-bezier(.2,.9,.2,1), box-shadow .22s ease, filter .22s ease, color .18s ease;
+  }
+
+  /* Float/glow the icon inside the card on hover */
+  #about .glass:hover .w-12 {
+    transform: translateY(-2px) scale(1.06);
+    box-shadow: 0 18px 48px color-mix(in srgb, var(--color-highlight) 44%, transparent);
+    background: color-mix(in srgb, var(--color-surface) 36%, transparent);
+  }
+
+  #about .glass:hover .w-12 svg {
+    color: var(--color-highlight);
+    filter: drop-shadow(0 12px 34px color-mix(in srgb, var(--color-highlight) 40%, transparent));
+  }
+
   /* header separator between icon and title */
   .header-sep {
     width: 1px;
