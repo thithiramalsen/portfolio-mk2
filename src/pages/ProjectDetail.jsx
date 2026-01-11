@@ -28,8 +28,12 @@ export const ProjectDetail = () => {
             <p className="text-muted-foreground">{project.details}</p>
           </div>
           <div className="flex gap-3 mt-6">
-            <a href={project.link} target="_blank" rel="noreferrer" className="btn btn-primary">Live</a>
-            <a href={project.github} target="_blank" rel="noreferrer" className="btn">Source</a>
+            {project.link ? (
+              <a href={project.link} target="_blank" rel="noreferrer" className="btn btn-primary">Live</a>
+            ) : null}
+            {project.github ? (
+              <a href={project.github} target="_blank" rel="noreferrer" className="btn">Source</a>
+            ) : null}
           </div>
         </div>
       </div>
