@@ -33,7 +33,7 @@ const socialLinks = [
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-[78vh] lg:min-h-[88vh] flex items-center overflow-visible">
       <div className="absolute inset-0 hero-gradient" />
       <div className="absolute inset-0 hero-fireflies pointer-events-none" aria-hidden="true">
         <span className="firefly" />
@@ -51,9 +51,9 @@ export const Hero = () => {
       </div>
       <div className="absolute inset-0 hero-noise" aria-hidden="true" />
 
-      <div className="container mx-auto px-6 pt-32 pb-24 relative z-10">
-        <div className="grid items-center gap-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-          <div className="space-y-10">
+      <div className="container mx-auto px-6 pt-20 pb-12 relative z-10">
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]">
+          <div className="space-y-8 lg:pr-10 max-w-[980px] pl-4 md:pl-8 lg:pl-12">
             <div className="inline-flex items-center gap-3 hero-badge animate-fade-in">
               <span className="hero-badge-icon">
                 <BadgeCheck className="w-4 h-4" />
@@ -65,23 +65,21 @@ export const Hero = () => {
             </div>
 
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
-                Crafting <span className="text-primary glow-text">digital</span>
-                <br className="hidden md:block" /> experiences with
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-fade-in animation-delay-100 max-w-none">
+                <span className="inline-block whitespace-nowrap">React.js Developer</span>
                 <br className="hidden md:block" />
-                <span className="font-serif italic font-normal text-primary-foreground/80">
-                  precision.
-                </span>
+                <span className="inline-block">Portfolio</span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl animate-fade-in animation-delay-200">
-                Hi, I'm Thithira Malsen — a software engineer specializing in
-                React, Next.js, and TypeScript. I build scalable, performant web
-                applications that users love.
+
+              <p className="text-lg md:text-xl text-muted-foreground max-w-[880px] animate-fade-in animation-delay-200">
+                Building modern, scalable web applications with React, JavaScript,
+                and cutting-edge technologies. Transforming ideas into exceptional
+                digital experiences.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
-              <Button size="lg" href="#contact">
+              <Button size="default" href="#contact" className="px-8">
                 Contact Me <ArrowRight className="w-5 h-5" />
               </Button>
               <AnimatedBorderButton>
@@ -90,9 +88,11 @@ export const Hero = () => {
               </AnimatedBorderButton>
             </div>
 
-            <div className="flex flex-wrap gap-6 animate-fade-in animation-delay-400">
-              {heroStats.map((stat) => (
-                <div key={stat.label} className="hero-stat">
+            <div className="flex items-center gap-6 animate-fade-in animation-delay-400 hero-stats-clean">
+              {heroStats.map((stat, idx) => (
+                <div
+                  key={stat.label}
+                  className={`hero-stat hero-stat-simple ${idx !== heroStats.length - 1 ? "stat-divider" : ""}`}>
                   <span className="hero-stat-value">{stat.value}</span>
                   <span className="hero-stat-label">{stat.label}</span>
                 </div>
@@ -116,9 +116,9 @@ export const Hero = () => {
             </div>
           </div>
 
-          <div className="relative flex justify-center lg:justify-end">
+            <div className="relative flex justify-center lg:justify-end">
             <div className="hero-orb" aria-hidden="true" />
-            <div className="segmented-frame animate-fade-in animation-delay-300 max-w-[520px] w-full">
+              <div className="segmented-frame animate-fade-in animation-delay-300 max-w-[420px] w-full">
               <div className="border-segments" aria-hidden="true">
                 <span className="border-segment seg-tl-h" />
                 <span className="border-segment seg-tl-v" />
@@ -134,35 +134,35 @@ export const Hero = () => {
                 <img
                   src="/profile-photo.jpg"
                   alt="Pedro Machado"
-                  className="w-full max-w-[480px] md:max-w-[560px] aspect-[4/5] object-cover rounded-[1.75rem] mx-auto"
+                  className="w-full max-w-[420px] md:max-w-[480px] aspect-[3/4] object-cover rounded-[1rem] mx-auto"
                 />
 
                 <div className="hero-floating-card hero-floating-card--top-left">
-                  <div className="text-3xl font-bold text-primary">5+</div>
+                  <div className="text-xl font-bold text-primary">5+</div>
                   <div className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
                     Years Exp.
                   </div>
                 </div>
 
-                <div className="hero-floating-card hero-floating-card--bottom-right">
+                <div className="hero-floating-card hero-floating-card--top-right">
                   <div className="flex items-center gap-3">
                     <span className="w-3 h-3 rounded-full bg-primary animate-pulse" />
                     <span className="text-sm font-medium">Available for work</span>
                   </div>
                 </div>
-              </div>
-            </div>
+                </div>
 
-            <div className="hero-tech-panel animate-fade-in animation-delay-500">
-              {showcaseTech.map((tech) => (
-                <img
-                  key={tech.id}
-                  src={tech.src}
-                  alt={tech.alt}
-                  title={tech.alt}
-                  className="hero-tech-icon"
-                />
-              ))}
+                <div className="hero-tech-panel animate-fade-in animation-delay-500">
+                  {showcaseTech.map((tech) => (
+                    <img
+                      key={tech.id}
+                      src={tech.src}
+                      alt={tech.alt}
+                      title={tech.alt}
+                      className="hero-tech-icon"
+                    />
+                  ))}
+                </div>
             </div>
           </div>
         </div>

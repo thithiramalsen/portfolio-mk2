@@ -150,6 +150,64 @@
     backdrop-filter: blur(22px);
   }
 
+  /* Add a subtle vertical divider between adjacent hero stats (used in Hero.jsx) */
+  .stat-divider {
+    position: relative;
+    padding-right: 1.35rem;
+    margin-right: 0.4rem;
+  }
+
+  .stat-divider::after {
+    content: "";
+    position: absolute;
+    right: -8px;
+    top: 18%;
+    height: 64%;
+    width: 1px;
+    background: color-mix(in srgb, var(--color-primary) 28%, transparent);
+    opacity: 0.55;
+    border-radius: 1px;
+  }
+
+  /* Clean stats layout (no heavy glass cards) */
+  .hero-stats-clean { gap: 2.25rem; }
+
+  .hero-stat-simple {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0 0.5rem;
+    min-width: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.125rem;
+    color: var(--color-primary-foreground);
+    text-align: center;
+  }
+
+  .hero-stat-simple .hero-stat-value {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-stat-simple .hero-stat-label {
+    font-size: 0.85rem;
+    color: var(--color-muted-foreground);
+    text-transform: none;
+    letter-spacing: 0.02em;
+    margin-top: 0.125rem;
+    position: static;
+    line-height: 1.05;
+    max-width: 8rem;
+    word-wrap: break-word;
+  }
+
+  /* Reduce visual weight of divider for the clean style */
+  .hero-stats-clean .stat-divider::after { background: color-mix(in srgb, var(--color-primary) 18%, transparent); opacity: 0.35; right: -10px; top: 10%; height: 80%; width: 1px; }
+
   .hero-stat-value {
     display: block;
     font-size: 1.75rem;
@@ -163,9 +221,9 @@
     display: block;
     margin-top: 0.2rem;
     font-size: 0.75rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: color-mix(in srgb, var(--color-muted-foreground) 75%, var(--color-primary-foreground) 25%);
+     position: absolute;
+     bottom: 22px;
+     left: 8px;
   }
 
   .hero-social {
@@ -174,12 +232,27 @@
     justify-content: center;
     width: 2.75rem;
     height: 2.75rem;
+    padding: 0;
     border-radius: 9999px;
     border: 1px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
-    background: color-mix(in srgb, var(--color-surface) 85%, transparent);
+    transform: translateY(0) scale(.98);
+    transition: transform .35s ease, box-shadow .35s ease;
     color: var(--color-muted-foreground);
-    transition: all 0.3s ease;
-    box-shadow: 0 18px 36px color-mix(in srgb, var(--color-primary) 18%, transparent);
+    box-shadow: 0 18px 36px color-mix(in srgb, var(--color-primary) 18%, transparent), inset 0 0 12px color-mix(in srgb, var(--color-primary) 12%, transparent);
+  }
+
+  /* TM logo gradient: bold and fades to the right */
+  .tm-logo {
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* bright red -> dark red gradient */
+    background-image: linear-gradient(90deg, var(--color-highlight) 0%, var(--color-primary) 70%);
+    /* ensure gradient aligns with larger type */
+    padding-right: 6px;
   }
 
   .hero-social:hover {
@@ -191,19 +264,20 @@
 
   .hero-orb {
     position: absolute;
-    inset: -14% -16% -10% -10%;
+    inset: -8% -10% -6% -6%;
     border-radius: 50% / 45%;
-    background: radial-gradient(circle at 45% 45%, color-mix(in srgb, var(--color-primary) 38%, transparent) 0%, transparent 68%);
-    filter: blur(72px);
-    opacity: 0.8;
-    animation: orb-pulse 14s ease-in-out infinite;
+    background: radial-gradient(circle at 45% 45%, color-mix(in srgb, var(--color-primary) 32%, transparent) 0%, transparent 68%);
+    filter: blur(56px);
+    opacity: 0.7;
+    animation: orb-pulse 16s ease-in-out infinite;
     pointer-events: none;
   }
 
   .segmented-frame {
     position: relative;
-    padding: 1.2rem;
-    border-radius: 2.25rem;
+    /* reduce outer padding so inner glass grows and image fills more */
+    padding: 0.35rem;
+    border-radius: 1.6rem;
   }
 
   .segmented-frame::before {
@@ -223,13 +297,13 @@
 
   .segmented-frame > .inner {
     position: relative;
-    z-index: 2;
+    z-index: 30;
     border-radius: inherit;
     overflow: hidden;
-    padding: 0.75rem;
+    padding: 0.15rem;
     background: color-mix(in srgb, var(--color-surface) 92%, transparent);
-    backdrop-filter: blur(12px);
-    box-shadow: inset 0 0 18px color-mix(in srgb, var(--color-primary) 12%, transparent);
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 0 14px color-mix(in srgb, var(--color-primary) 10%, transparent);
   }
 
   .segmented-frame {
@@ -238,7 +312,8 @@
 
   .border-segments {
     position: absolute;
-    inset: calc(-1 * var(--seg-offset));
+    /* reduce negative inset so segments stay nearer the frame and avoid clipping */
+    inset: calc(-0.5 * var(--seg-offset));
     z-index: 3;
     pointer-events: none;
     border-radius: inherit;
@@ -279,14 +354,31 @@
   }
 
   .hero-tech-icon {
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
     object-fit: contain;
-    filter: drop-shadow(0 8px 20px color-mix(in srgb, var(--color-primary) 20%, transparent));
-    background: color-mix(in srgb, var(--color-surface) 85%, transparent);
-    padding: 6px;
+    /* tint icons red: use sepia+hue-rotate without darkening */
+    filter: grayscale(1) sepia(1) hue-rotate(-10deg) saturate(700%) brightness(1) drop-shadow(0 6px 18px color-mix(in srgb, var(--color-primary) 55%, transparent));
+    background: color-mix(in srgb, var(--color-surface) 78%, transparent);
+    padding: 5px;
     border-radius: 9999px;
-    border: 1px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 42%, transparent);
+  }
+
+  .hero-tech-icon:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 10px 28px color-mix(in srgb, var(--color-primary) 50%, transparent);
+  }
+
+  /* Breathe animation for tech panel */
+  .hero-tech-panel {
+    animation: tech-breathe 6s ease-in-out infinite;
+  }
+
+  @keyframes tech-breathe {
+     0% { transform: translateY(0) scale(.98); box-shadow: 0 12px 36px color-mix(in srgb, var(--color-primary) 38%, transparent), inset 0 0 16px color-mix(in srgb, var(--color-primary) 18%, transparent); }
+     50% { transform: translateY(-10px) scale(1); box-shadow: 0 26px 64px color-mix(in srgb, var(--color-primary) 64%, transparent), inset 0 0 28px color-mix(in srgb, var(--color-primary) 36%, transparent); }
+     100% { transform: translateY(0) scale(.98); box-shadow: 0 12px 36px color-mix(in srgb, var(--color-primary) 38%, transparent), inset 0 0 16px color-mix(in srgb, var(--color-primary) 18%, transparent); }
   }
 
   /* Fireflies / floating dots */
@@ -337,40 +429,49 @@
 
   .hero-floating-card {
     position: absolute;
-    padding: 0.95rem 1.3rem;
-    border-radius: 1.15rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 0.9rem;
     background: linear-gradient(135deg, color-mix(in srgb, var(--color-surface) 82%, transparent) 0%, color-mix(in srgb, var(--color-primary) 18%, transparent) 100%);
     border: 1px solid color-mix(in srgb, var(--color-primary) 38%, transparent);
-    box-shadow: 0 28px 60px color-mix(in srgb, var(--color-primary) 25%, transparent);
+    box-shadow: 0 18px 36px color-mix(in srgb, var(--color-primary) 18%, transparent);
+    z-index: 40;
     backdrop-filter: blur(20px);
     animation: float 6s ease-in-out infinite;
   }
 
   .hero-floating-card--top-left {
-    top: -1.9rem;
-    left: -1.9rem;
-    animation-delay: 0.2s;
+    top: 12px;
+    left: 12px;
+    animation-delay: 0.15s;
   }
 
   .hero-floating-card--bottom-right {
-    bottom: -1.7rem;
-    right: -1.7rem;
-    animation-delay: 0.6s;
+    bottom: 12px;
+    right: 12px;
+    animation-delay: 0.4s;
+  }
+
+  .hero-floating-card--top-right {
+    top: 12px;
+    right: 12px;
+    animation-delay: 0.35s;
   }
 
   .hero-tech-panel {
     position: absolute;
-    bottom: -3.2rem;
-    right: 0;
+    bottom: 12px;
+    left: 12px;
     display: flex;
-    gap: 0.75rem;
-    padding: 0.85rem 1.25rem;
+    gap: 0.5rem;
+    padding: 0.55rem 0.85rem;
     border-radius: 9999px;
-    background: linear-gradient(135deg, color-mix(in srgb, var(--color-surface) 82%, transparent) 0%, color-mix(in srgb, var(--color-primary) 18%, transparent) 100%);
-    border: 1px solid color-mix(in srgb, var(--color-primary) 32%, transparent);
-    box-shadow: 0 24px 60px color-mix(in srgb, var(--color-primary) 24%, transparent);
-    backdrop-filter: blur(18px);
+    background: color-mix(in srgb, var(--color-primary) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 48%, transparent);
+    box-shadow: 0 12px 40px color-mix(in srgb, var(--color-primary) 40%, transparent), inset 0 0 18px color-mix(in srgb, var(--color-primary) 18%, transparent);
+    backdrop-filter: blur(8px);
     align-items: center;
+    z-index: 40;
+    transform: translateY(0) scale(.96);
   }
 
   .hero-tech-pill {
