@@ -35,8 +35,8 @@ const showcaseTech = [
 ];
 
 const socialLinks = [
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Github, href: "https://github.com/thithiramalsen", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/thithira-malsen/", label: "LinkedIn" },
   { icon: Twitter, href: "#", label: "Twitter" },
 ];
 
@@ -162,7 +162,7 @@ export const Hero = () => {
               <div className="inner glass">
                 <img
                   src="/profile-photo.jpg"
-                  alt="Pedro Machado"
+                  alt="Thithira Malsen"
                   className="w-full max-w-[420px] md:max-w-[480px] aspect-[3/4] object-cover rounded-[1rem] mx-auto"
                 />
 

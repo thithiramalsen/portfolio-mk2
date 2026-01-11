@@ -8,8 +8,8 @@ const projects = [
     tags: ["Machine Learning", "Data Mining", "Case Study"],
     techIcons: ["SiPython", "SiPostgresql", "SiReact"],
     category: "Machine Learning",
-    link: "#",
-    github: "#",
+    link: "https://hit-predictor.vercel.app/",
+    github: "https://github.com/thithiramalsen/Hit-Predictor",
     details: "Detailed case study and implementation notes for Spotify Hit Song Predictor.",
   },
   {
@@ -21,8 +21,8 @@ const projects = [
     tags: ["AI", "NLP", "LLMs"],
     techIcons: ["SiOpenai", "SiPython", "SiNodedotjs"],
     category: "AI",
-    link: "#",
-    github: "#",
+    link: "https://minute-me.vercel.app/",
+    github: "https://github.com/thithiramalsen/MinuteMe",
     details: "More background and architecture for MinuteMe, plus datasets used.",
   },
   {
@@ -34,8 +34,8 @@ const projects = [
     tags: ["Full Stack", "MERN", "In Progress"],
     techIcons: ["SiReact", "SiNodedotjs", "SiMongodb"],
     category: "Full Stack",
-    link: "#",
-    github: "#",
+    link: "",
+    github: "https://github.com/thithiramalsen/AnyHire-group",
     details: "Product vision, API design and deployment notes for AnyHire.lk.",
   },
   {
@@ -47,8 +47,8 @@ const projects = [
     tags: ["Data Engineering", "Analytics", "Case Study"],
     techIcons: ["SiPostgresql", "SiRedis", "SiPython"],
     category: "Data Engineering",
-    link: "#",
-    github: "#",
+    link: "",
+    github: "https://github.com/thithiramalsen/sql-data-warehouse-project",
     details: "ETL pipelines, schema design and reporting examples for the data warehouse project.",
   },
 ];
