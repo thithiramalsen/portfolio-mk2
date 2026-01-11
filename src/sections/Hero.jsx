@@ -147,7 +147,7 @@ export const Hero = () => {
                 />
 
                 <div className="hero-floating-card hero-floating-card--top-left">
-                  <div className="text-xl font-bold text-primary">5+</div>
+                  <div className="text-xl font-bold text-primary">2+</div>
                   <div className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
                     Years Exp.
                   </div>

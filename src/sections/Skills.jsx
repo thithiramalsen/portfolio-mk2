@@ -2,7 +2,35 @@ import { Code, Server, Wrench } from "lucide-react";
 import * as SiIcons from "react-icons/si";
 
 const categories = [
+
   {
+    id: "backend",
+    title: "Backend & APIs",
+    items: [
+      { name: "FastAPI", level: "Advanced", years: "1+", percent: 72 },
+      { name: "Node.js", level: "Intermediate", years: "2+", percent: 68 },
+      { name: "REST APIs", level: "Advanced", years: "3+", percent: 80 },
+      { name: "MongoDB", level: "Intermediate", years: "1+", percent: 70 },
+      { name: "SQL", level: "Advanced", years: "2+", percent: 74 },
+      { name: "LLM APIs (OpenAI, Gemini)", level: "Intermediate", years: "1+", percent: 60 },
+    ],
+    icon: Server,
+  },
+  {
+    id: "tools",
+    title: "Tools & Platforms",
+    items: [
+      { name: "Python", level: "Advanced", years: "3+", percent: 90 },
+      { name: "Pandas, NumPy", level: "Advanced", years: "2+", percent: 82 },
+      { name: "Scikit-learn", level: "Intermediate", years: "1+", percent: 68 },
+      { name: "Git & GitHub", level: "Advanced", years: "4+", percent: 86 },
+      { name: "AWS / Azure (labs)", level: "Intermediate", years: "1+", percent: 56 },
+      { name: "Figma", level: "Intermediate", years: "2+", percent: 64 },
+    ],
+    icon: Wrench,
+  },
+
+    {
     id: "frontend",
     title: "Frontend Development",
     items: [
@@ -11,35 +39,11 @@ const categories = [
       { name: "TypeScript", level: "Advanced", years: "2+", percent: 82 },
       { name: "Next.js", level: "Advanced", years: "2+", percent: 78 },
       { name: "Tailwind CSS", level: "Expert", years: "3+", percent: 88 },
+      { name: "Vite", level: "Advanced", years: "1+", percent: 58 },
     ],
     icon: Code,
   },
-  {
-    id: "backend",
-    title: "Backend & APIs",
-    items: [
-      { name: "FastAPI", level: "Advanced", years: "1+", percent: 72 },
-      { name: "Node.js", level: "Intermediate", years: "2+", percent: 68 },
-      { name: "REST APIs", level: "Advanced", years: "3+", percent: 80 },
-      { name: "SQL", level: "Advanced", years: "2+", percent: 74 },
-      { name: "LLM APIs (OpenAI, Gemini)", level: "Intermediate", years: "1+", percent: 60 },
-    ],
-    icon: Server,
-  },
-  {
-    id: "tools",
-    title: "Tools & Others",
-    items: [
-      { name: "Python", level: "Advanced", years: "3+", percent: 90 },
-      { name: "Pandas, NumPy", level: "Advanced", years: "2+", percent: 82 },
-      { name: "Scikit-learn", level: "Intermediate", years: "1+", percent: 68 },
-      { name: "Git & GitHub", level: "Advanced", years: "4+", percent: 86 },
-      { name: "AWS / Azure (labs)", level: "Intermediate", years: "1+", percent: 56 },
-      { name: "Figma", level: "Intermediate", years: "2+", percent: 64 },
-      { name: "Vite", level: "Advanced", years: "1+", percent: 58 },
-    ],
-    icon: Wrench,
-  },
+
 ];
 
 export const Skills = () => {
