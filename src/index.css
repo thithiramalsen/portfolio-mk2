@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Roboto+Condensed:wght@300;400;500;700&display=swap");
 @import "tailwindcss";
 
@@ -43,7 +44,7 @@
     background-attachment: fixed;
     background-size: cover;
     color: var(--color-foreground);
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: "Urbanist", sans-serif;
     letter-spacing: 0.02em;
   }
 
@@ -53,12 +54,12 @@
   h4,
   h5,
   h6 {
-    font-family: "Cinzel", serif;
-    letter-spacing: 0.04em;
+    font-family: "Urbanist", sans-serif;
+    letter-spacing: 0.02em;
   }
 
   .font-serif {
-    font-family: "Cinzel", serif;
+    font-family: "Urbanist", sans-serif;
   }
 }
 
@@ -355,15 +356,17 @@
   }
 
   .hero-tech-icon {
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
-    /* tint icons red: use sepia+hue-rotate without darkening */
-    filter: grayscale(1) sepia(1) hue-rotate(-10deg) saturate(700%) brightness(1) drop-shadow(0 6px 18px color-mix(in srgb, var(--color-primary) 55%, transparent));
-    background: color-mix(in srgb, var(--color-surface) 78%, transparent);
-    padding: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 6px;
     border-radius: 9999px;
+    background: color-mix(in srgb, var(--color-surface) 78%, transparent);
     border: 1px solid color-mix(in srgb, var(--color-primary) 42%, transparent);
+    color: var(--color-highlight);
+    transition: transform .25s ease, box-shadow .25s ease;
   }
 
   .hero-tech-icon:hover {
@@ -499,11 +502,13 @@
   }
 
   .tech-card-icon {
-    width: 44px;
-    height: 44px;
-    object-fit: contain;
-    filter: grayscale(1) sepia(1) hue-rotate(-10deg) saturate(700%) brightness(1);
-    transition: transform .28s ease, filter .28s ease, drop-shadow .28s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-right: 12px;
+    color: var(--color-primary);
   }
 
   .tech-card:hover .tech-card-icon {
@@ -518,37 +523,73 @@
   }
 
   /* Skill list icons */
-  .skill-icon { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; }
+  .skill-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 8px;
+    border-radius: 12px;
+    /* lighter surface to contrast the main card */
+    background: color-mix(in srgb, var(--color-surface) 60%, var(--color-foreground) 6%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+    box-shadow: 0 8px 22px color-mix(in srgb, var(--color-primary) 12%, transparent), inset 0 0 8px color-mix(in srgb, var(--color-foreground) 6%, transparent);
+    transition: transform .24s ease, box-shadow .24s ease;
+    color: var(--color-highlight);
+    backdrop-filter: blur(8px);
+  }
 
-  .skill-icon-image { width: 28px; height: 28px; display: inline-block; object-fit: contain; color: var(--color-highlight); filter: none; }
+  .skill-icon:hover {
+    transform: translateY(-3px) scale(1.06);
+    box-shadow: 0 22px 60px color-mix(in srgb, var(--color-highlight) 40%, transparent), inset 0 0 16px color-mix(in srgb, var(--color-primary) 8%, transparent);
+  }
 
-  .skill-icon-fallback { display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:6px; background: #f4c542; color:#111; font-weight:700; }
+  .skill-icon-image {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    color: inherit;
+    filter: none;
+  }
+
+  .skill-icon-fallback {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background: #f4c542;
+    color: #111;
+    font-weight: 700;
+  }
 
   /* Skills cards (matching green design but in red scheme) */
   .skills-card {
     transition: transform .28s ease, box-shadow .28s ease;
     border-radius: 1rem;
-    /* glass + subtle gradient for morphing surface */
     background: linear-gradient(135deg, color-mix(in srgb, var(--color-surface) 86%, transparent) 0%, color-mix(in srgb, var(--color-primary) 10%, transparent) 100%);
-    backdrop-filter: blur(10px) saturate(120%);
+    backdrop-filter: blur(12px) saturate(120%);
     border: 1px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
     padding: 1rem;
-    box-shadow: 0 18px 40px color-mix(in srgb, var(--color-primary) 12%, transparent), inset 0 0 18px color-mix(in srgb, var(--color-primary) 6%, transparent);
+    box-shadow: 0 18px 44px color-mix(in srgb, var(--color-primary) 12%, transparent), inset 0 0 18px color-mix(in srgb, var(--color-primary) 6%, transparent);
   }
 
   .skills-card .skill-item { width: 100%; }
 
   .skill-bar {
-    height: 8px;
-    background: color-mix(in srgb, var(--color-muted) 60%, transparent);
+    height: 10px;
+    background: color-mix(in srgb, var(--color-muted) 58%, transparent);
     border-radius: 999px;
     overflow: hidden;
+    box-shadow: inset 0 -6px 12px rgba(0,0,0,0.45);
   }
 
   .skill-bar-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--color-highlight), var(--color-primary));
-    box-shadow: 0 8px 26px color-mix(in srgb, var(--color-highlight) 45%, transparent);
+    background: linear-gradient(90deg, color-mix(in srgb, var(--color-highlight) 85%, transparent) 0%, color-mix(in srgb, var(--color-primary) 85%, transparent) 100%);
+    box-shadow: 0 8px 28px color-mix(in srgb, var(--color-highlight) 40%, transparent), inset 0 -6px 12px rgba(0,0,0,0.18);
     border-radius: 999px;
     transition: width .6s cubic-bezier(.2,.9,.2,1);
   }
