@@ -7,14 +7,14 @@ import {
   Twitter,
   Download,
   BadgeCheck,
+  Cloud,
 } from "lucide-react";
 import {
+  SiPython,
+  SiTensorflow,
+  SiPostgresql,
   SiReact,
-  SiNextdotjs,
-  SiTypescript,
   SiNodedotjs,
-  SiGraphql,
-  SiTailwindcss,
 } from "react-icons/si";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
@@ -26,12 +26,12 @@ const heroStats = [
 ];
 
 const showcaseTech = [
+  { id: "python", Icon: SiPython, alt: "Python" },
+  { id: "ml", Icon: SiTensorflow, alt: "Machine Learning" },
+  { id: "sql", Icon: SiPostgresql, alt: "SQL / Postgres" },
   { id: "react", Icon: SiReact, alt: "React" },
-  { id: "nextjs", Icon: SiNextdotjs, alt: "Next.js" },
-  { id: "ts", Icon: SiTypescript, alt: "TypeScript" },
   { id: "node", Icon: SiNodedotjs, alt: "Node.js" },
-  { id: "graphql", Icon: SiGraphql, alt: "GraphQL" },
-  { id: "tailwind", Icon: SiTailwindcss, alt: "Tailwind CSS" },
+  { id: "cloud", Icon: Cloud, alt: "Cloud" },
 ];
 
 const socialLinks = [
@@ -42,7 +42,7 @@ const socialLinks = [
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-[78vh] lg:min-h-[88vh] flex items-center overflow-visible">
+    <section id="hero" className="relative min-h-[78vh] lg:min-h-[88vh] flex items-center overflow-visible">
       <div className="absolute inset-0 hero-gradient" />
       <div className="absolute inset-0 hero-fireflies pointer-events-none" aria-hidden="true">
         <span className="firefly" />
@@ -77,7 +77,7 @@ export const Hero = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-fade-in animation-delay-100 max-w-none">
                 <span className="inline-block whitespace-nowrap">Data Science & AI Developer</span>
                 <br className="hidden md:block" />
-                <span className="block text-xl md:text-2xl lg:text-3xl font-medium mt-2 max-w-[880px] text-[#ffb84d]">
+                <span className="block text-xl md:text-2xl lg:text-3xl font-medium mt-2 max-w-[880px]" style={{ color: 'var(--color-highlight)' }}>
                   Portfolio
                 </span>
               </h1>
@@ -88,8 +88,8 @@ export const Hero = () => {
             </div>
 
             <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
-              <Button size="default" href="#contact" className="px-8">
-                Contact Me <ArrowRight className="w-5 h-5" />
+              <Button size="default" href="#projects" className="px-8">
+                View Projects <ArrowRight className="w-5 h-5" />
               </Button>
               <AnimatedBorderButton>
                 <Download className="w-5 h-5" />
@@ -127,7 +127,7 @@ export const Hero = () => {
 
             <div className="relative flex justify-center lg:justify-end">
             <div className="hero-orb" aria-hidden="true" />
-              <div className="segmented-frame animate-fade-in animation-delay-300 max-w-[420px] w-full">
+              <div className="segmented-frame group animate-fade-in animation-delay-300 max-w-[420px] w-full">
               <div className="border-segments" aria-hidden="true">
                 <span className="border-segment seg-tl-h" />
                 <span className="border-segment seg-tl-v" />
@@ -138,6 +138,26 @@ export const Hero = () => {
                 <span className="border-segment seg-br-h" />
                 <span className="border-segment seg-br-v" />
               </div>
+
+              {/* Animated SVG border (matches AnimatedBorderButton animation on hover) */}
+              <svg
+                className="absolute inset-0 pointer-events-none hero-frame-border"
+                viewBox="0 0 420 560"
+                preserveAspectRatio="none"
+                style={{ overflow: "visible", zIndex: 50 }}
+              >
+                <path
+                  d="M 30,1 A 29,29 0 0 0 1,30 L 1,530 A 29,29 0 0 0 30,559 L 390,559 A 29,29 0 0 0 419,530 L 419,30 A 29,29 0 0 0 390,1 Z"
+                  fill="none"
+                  stroke="var(--color-primary)"
+                  strokeWidth="2"
+                  strokeDasharray="2000 2000"
+                  strokeDashoffset="2000"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="animated-border-path"
+                />
+              </svg>
 
               <div className="inner glass">
                 <img

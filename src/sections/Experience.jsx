@@ -1,38 +1,55 @@
+import * as SiIcons from "react-icons/si";
+
 const experiences = [
   {
-    period: "2022 — Present",
-    role: "Senior Frontend Engineer",
-    company: "Tech Innovators Inc.",
-    description:
-      "Leading frontend architecture for a suite of fintech products. Implemented micro-frontend architecture, reduced bundle size by 40%, and mentored a team of 5 developers.",
-    technologies: ["React", "TypeScript", "Next.js", "GraphQL"],
-    current: true,
-  },
-  {
-    period: "2020 — 2022",
-    role: "Frontend Engineer",
-    company: "Digital Solutions Co.",
-    description:
-      "Built and maintained multiple React applications for enterprise clients. Introduced automated testing practices that improved code coverage to 85%.",
-    technologies: ["React", "Redux", "Jest", "Cypress"],
+    period: "Mar 2025 — May 2025",
+    role: "AnyHire",
+    company: "",
+    description: "Built a part-time job platform to match candidates with hourly roles. Implemented REST APIs, user auth, and job workflow.",
+    technologies: [
+      { label: "MongoDB", Icon: SiIcons.SiMongodb },
+      { label: "Express", Icon: SiIcons.SiExpress },
+      { label: "React", Icon: SiIcons.SiReact },
+      { label: "Node.js", Icon: SiIcons.SiNodedotjs },
+    ],
     current: false,
   },
   {
-    period: "2019 — 2020",
-    role: "Junior Developer",
-    company: "StartUp Labs",
-    description:
-      "Contributed to the development of a SaaS platform from MVP to production. Collaborated with designers to implement pixel-perfect UI components.",
-    technologies: ["React", "Node.js", "MongoDB", "AWS"],
+    period: "Aug 2025 — Oct 2025",
+    role: "Spotify Hit Song Predictor",
+    company: "",
+    description: "Trained models on audio features to predict a song's hit potential. Evaluated feature importance and optimized inference pipeline.",
+    technologies: [
+      { label: "Python", Icon: SiIcons.SiPython },
+      { label: "TensorFlow", Icon: SiIcons.SiTensorflow },
+      { label: "scikit-learn", Icon: SiIcons.SiScikitlearn },
+    ],
     current: false,
   },
   {
-    period: "2018 — 2019",
-    role: "Freelance Developer",
-    company: "Self-Employed",
+    period: "Aug 2025 — Oct 2025",
+    role: "MinuteMe — AI Meeting Assistant",
+    company: "",
+    description: "Built an API-backed service that summarizes meetings and extracts action items from audio and transcripts.",
+    technologies: [
+      { label: "OpenAI APIs", Icon: SiIcons.SiOpenai },
+      { label: "FastAPI", Icon: SiIcons.SiFastapi },
+      { label: "React", Icon: SiIcons.SiReact },
+    ],
+    current: false,
+  },
+  {
+    period: "Ongoing",
+    role: "Roadmap — What I’m Currently Learning",
+    company: "",
     description:
-      "Delivered custom web solutions for small businesses and startups. Built 15+ websites and applications, handling everything from design to deployment.",
-    technologies: ["JavaScript", "PHP", "WordPress", "MySQL"],
+      "Following structured learning paths in data engineering, system design, and production ML systems. Focus areas: data warehousing, ETL, ML API deployment, scalable backends.",
+    technologies: [
+      { label: "Data warehousing", Icon: SiIcons.SiPostgresql },
+      { label: "ETL pipelines", Icon: SiIcons.SiPython },
+      { label: "ML-backed APIs", Icon: SiIcons.SiFastapi },
+      { label: "Scalable backend", Icon: SiIcons.SiAmazonaws },
+    ],
     current: false,
   },
 ];
@@ -60,7 +77,7 @@ export const Experience = () => {
             text-secondary-foreground"
           >
             Experience that{" "}
-            <span className="font-serif italic font-normal text-white">
+            <span className="font-normal text-white">
               {" "}
               speaks volumes.
             </span>
@@ -74,6 +91,7 @@ export const Experience = () => {
             senior engineer leading teams and building products at scale.
           </p>
         </div>
+        {/* Learning roadmap now included as a timeline card in `experiences` */}
 
         {/* Timeline */}
         <div className="relative">
@@ -121,9 +139,12 @@ export const Experience = () => {
                       {exp.technologies.map((tech, techIdx) => (
                         <span
                           key={techIdx}
-                          className="px-3 py-1 bg-surface text-xs rounded-full text-muted-foreground"
+                          className="px-3 py-1 bg-surface text-xs rounded-full text-muted-foreground inline-flex items-center gap-2"
                         >
-                          {tech}
+                          {tech.Icon ? (
+                            <tech.Icon className="exp-tech-icon" />
+                          ) : null}
+                          <span className="text-xs">{tech.label || tech}</span>
                         </span>
                       ))}
                     </div>

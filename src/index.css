@@ -459,6 +459,37 @@
     to { transform: scaleY(1); opacity: 1; }
   }
 
+  /* Continuous subtle motion for segmented frame outer lines */
+  @keyframes seg-move-x {
+    0% { transform: translateX(-12px); opacity: 0.82; }
+    50% { transform: translateX(12px); opacity: 1; }
+    100% { transform: translateX(-12px); opacity: 0.82; }
+  }
+
+  @keyframes seg-move-y {
+    0% { transform: translateY(-12px); opacity: 0.82; }
+    50% { transform: translateY(12px); opacity: 1; }
+    100% { transform: translateY(-12px); opacity: 0.82; }
+  }
+
+  .border-segment {
+    /* allow GPU acceleration for smooth motion */
+    will-change: transform, opacity;
+    opacity: 0.98;
+  }
+
+  /* Horizontal segments - gentle left/right motion with staggered delays */
+  .seg-tl-h { animation: seg-move-x 4.8s ease-in-out infinite; animation-delay: 0.1s; }
+  .seg-tr-h { animation: seg-move-x 5.1s ease-in-out infinite; animation-delay: 0.3s; }
+  .seg-bl-h { animation: seg-move-x 5.4s ease-in-out infinite; animation-delay: 0.5s; }
+  .seg-br-h { animation: seg-move-x 5.7s ease-in-out infinite; animation-delay: 0.7s; }
+
+  /* Vertical segments - gentle up/down motion with staggered delays */
+  .seg-tl-v { animation: seg-move-y 4.5s ease-in-out infinite; animation-delay: 0.05s; }
+  .seg-tr-v { animation: seg-move-y 4.9s ease-in-out infinite; animation-delay: 0.25s; }
+  .seg-bl-v { animation: seg-move-y 5.2s ease-in-out infinite; animation-delay: 0.45s; }
+  .seg-br-v { animation: seg-move-y 5.6s ease-in-out infinite; animation-delay: 0.65s; }
+
   .hero-tech-icon {
     display: inline-flex;
     align-items: center;
@@ -548,7 +579,7 @@
   }
 
   .hero-floating-card--top-left {
-    top: 12px;
+    top: 18px;
     left: 12px;
     animation-delay: 0.15s;
   }
@@ -560,7 +591,7 @@
   }
 
   .hero-floating-card--top-right {
-    top: 12px;
+    top: 18px;
     right: 12px;
     animation-delay: 0.35s;
   }
@@ -580,6 +611,14 @@
     align-items: center;
     z-index: 40;
     transform: translateY(0) scale(.96);
+    transition: transform .32s ease, box-shadow .32s ease;
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 0.35s;
+  }
+
+  .hero-tech-panel:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 28px 68px color-mix(in srgb, var(--color-highlight) 30%, transparent);
   }
 
   /* Tech cards used in About section */
@@ -657,6 +696,53 @@
     filter: none;
   }
 
+  /* Experience section tech icons: colored + subtle glow to match skills/hero */
+  .exp-tech-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-highlight);
+    display: inline-block;
+    vertical-align: middle;
+    filter: drop-shadow(0 8px 28px color-mix(in srgb, var(--color-highlight) 32%, transparent));
+  }
+
+  /* Experience section hover + glow (match skills card behavior) */
+  #experience .space-y-12 > div:hover .glass {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 28px 72px color-mix(in srgb, var(--color-highlight) 36%, transparent), inset 0 0 20px color-mix(in srgb, var(--color-primary) 8%, transparent);
+    border-color: color-mix(in srgb, var(--color-highlight) 36%, transparent);
+  }
+
+  /* Icon glow on card hover */
+  #experience .space-y-12 > div:hover .exp-tech-icon {
+    transform: translateY(-2px) scale(1.08);
+    filter: drop-shadow(0 18px 48px color-mix(in srgb, var(--color-highlight) 44%, transparent));
+    color: var(--color-highlight);
+  }
+
+  /* Smooth transitions */
+  #experience .glass,
+  #experience .exp-tech-icon {
+    transition: transform .22s cubic-bezier(.2,.9,.2,1), box-shadow .22s ease, filter .22s ease, color .18s ease;
+  }
+
+  /* Intensify timeline glow when any card is hovered (modern browsers support :has) */
+  .relative:has(.space-y-12 > div:hover) .timeline-glow,
+  #experience .relative:hover .timeline-glow {
+    box-shadow: 0 0 88px color-mix(in srgb, var(--color-highlight) 56%, transparent);
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--color-highlight) 72%, transparent) 0%, color-mix(in srgb, var(--color-primary) 36%, transparent) 40%, transparent 100%);
+    opacity: 1;
+    transition: box-shadow .18s ease, background .18s ease, opacity .18s ease;
+  }
+
+  /* Default timeline glow — stronger by default */
+  .timeline-glow {
+    transition: box-shadow .24s ease, background .24s ease, opacity .24s ease;
+    opacity: 1;
+    box-shadow: 0 0 36px color-mix(in srgb, var(--color-highlight) 46%, transparent);
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--color-highlight) 44%, transparent) 0%, color-mix(in srgb, var(--color-primary) 28%, transparent) 40%, transparent 100%);
+  }
+
   .skill-icon-fallback {
     display: inline-flex;
     align-items: center;
@@ -729,6 +815,30 @@
     background: color-mix(in srgb, var(--color-primary) 16%, transparent);
     color: var(--color-primary-foreground);
     border-color: color-mix(in srgb, var(--color-primary) 18%, transparent);
+  }
+
+  /* About section cards: match hover/glow/scale from Skills & Experience */
+  #about .glass:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 28px 72px color-mix(in srgb, var(--color-highlight) 36%, transparent), inset 0 0 20px color-mix(in srgb, var(--color-primary) 8%, transparent);
+    border-color: color-mix(in srgb, var(--color-highlight) 36%, transparent);
+  }
+
+  #about .glass,
+  #about .glass .w-12 svg {
+    transition: transform .22s cubic-bezier(.2,.9,.2,1), box-shadow .22s ease, filter .22s ease, color .18s ease;
+  }
+
+  /* Float/glow the icon inside the card on hover */
+  #about .glass:hover .w-12 {
+    transform: translateY(-2px) scale(1.06);
+    box-shadow: 0 18px 48px color-mix(in srgb, var(--color-highlight) 44%, transparent);
+    background: color-mix(in srgb, var(--color-surface) 36%, transparent);
+  }
+
+  #about .glass:hover .w-12 svg {
+    color: var(--color-highlight);
+    filter: drop-shadow(0 12px 34px color-mix(in srgb, var(--color-highlight) 40%, transparent));
   }
 
   /* header separator between icon and title */
@@ -1103,10 +1213,10 @@ section[id="contact"] > .container {
   @keyframes float {
     0%,
     100% {
-      transform: translateY(0);
+      transform: translateY(0) scale(.96);
     }
     50% {
-      transform: translateY(-10px);
+      transform: translateY(-12px) scale(1);
     }
   }
 
@@ -1173,10 +1283,10 @@ section[id="contact"] > .container {
 
   @keyframes animated-border {
     0% {
-      stroke-dashoffset: 400;
+      stroke-dashoffset: 2000;
     }
     100% {
-      stroke-dashoffset: -550;
+      stroke-dashoffset: -2000;
     }
   }
 

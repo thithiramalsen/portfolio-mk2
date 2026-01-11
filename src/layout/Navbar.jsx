@@ -1,6 +1,7 @@
 import { Button } from "@/components/Button";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -31,33 +32,30 @@ export const Navbar = () => {
       }  z-[100]`}
     >
       <nav className="container mx-auto px-6 flex items-center justify-between">
-        <a
-          href="#"
-          className="flex items-center gap-2 text-xl font-bold tracking-tight hover:text-primary"
-        >
+        <Link to="/#hero" className="flex items-center gap-2 text-xl font-bold tracking-tight hover:text-primary">
           <span className="text-primary text-3xl leading-none">&lt;</span>
           <span className="uppercase tracking-[0.32em] text-lg md:text-xl tm-logo">TM</span>
           <span className="text-primary text-3xl leading-none">/&gt;</span>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-1">
           <div className="glass rounded-full px-2 py-1 flex items-center gap-1">
             {navLinks.map((link, index) => (
-              <a
-                href={link.href}
+              <Link
+                to={`/${link.href.replace(/^#/, "#")}`}
                 key={index}
                 className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground rounded-full hover:bg-surface"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <Button size="sm" href="#contact">
+          <Button size="sm" href="/#contact">
             Contact Me
           </Button>
         </div>
@@ -76,17 +74,17 @@ export const Navbar = () => {
         <div className="md:hidden glass-strong animate-fade-in">
           <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
             {navLinks.map((link, index) => (
-              <a
-                href={link.href}
+              <Link
+                to={`/${link.href.replace(/^#/, "#")}`}
                 key={index}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-lg text-muted-foreground hover:text-foreground py-2"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
 
-            <Button href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
+            <Button href="/#contact" onClick={() => setIsMobileMenuOpen(false)}>
               Contact Me
             </Button>
           </div>

@@ -77,10 +77,7 @@ export const Testimonials = () => {
           animation-delay-100 text-secondary-foreground"
           >
             Kind words from{" "}
-            <span
-              className="font-serif italic 
-            font-normal text-white"
-            >
+            <span className="font-normal text-white">
               amazing people.
             </span>
           </h2>
