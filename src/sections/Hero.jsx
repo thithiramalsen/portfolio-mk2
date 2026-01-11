@@ -7,14 +7,14 @@ import {
   Twitter,
   Download,
   BadgeCheck,
+  Cloud,
 } from "lucide-react";
 import {
+  SiPython,
+  SiTensorflow,
+  SiPostgresql,
   SiReact,
-  SiNextdotjs,
-  SiTypescript,
   SiNodedotjs,
-  SiGraphql,
-  SiTailwindcss,
 } from "react-icons/si";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
@@ -26,12 +26,12 @@ const heroStats = [
 ];
 
 const showcaseTech = [
+  { id: "python", Icon: SiPython, alt: "Python" },
+  { id: "ml", Icon: SiTensorflow, alt: "Machine Learning" },
+  { id: "sql", Icon: SiPostgresql, alt: "SQL / Postgres" },
   { id: "react", Icon: SiReact, alt: "React" },
-  { id: "nextjs", Icon: SiNextdotjs, alt: "Next.js" },
-  { id: "ts", Icon: SiTypescript, alt: "TypeScript" },
   { id: "node", Icon: SiNodedotjs, alt: "Node.js" },
-  { id: "graphql", Icon: SiGraphql, alt: "GraphQL" },
-  { id: "tailwind", Icon: SiTailwindcss, alt: "Tailwind CSS" },
+  { id: "cloud", Icon: Cloud, alt: "Cloud" },
 ];
 
 const socialLinks = [
@@ -77,7 +77,7 @@ export const Hero = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-fade-in animation-delay-100 max-w-none">
                 <span className="inline-block whitespace-nowrap">Data Science & AI Developer</span>
                 <br className="hidden md:block" />
-                <span className="block text-xl md:text-2xl lg:text-3xl font-medium mt-2 max-w-[880px] text-[#ffb84d]">
+                <span className="block text-xl md:text-2xl lg:text-3xl font-medium mt-2 max-w-[880px]" style={{ color: 'var(--color-highlight)' }}>
                   Portfolio
                 </span>
               </h1>
