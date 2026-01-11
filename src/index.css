@@ -782,8 +782,8 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     
-    /* Center cards */
-    align-items: center;
+    /* Stretch cards to same height */
+    align-items: stretch;
   }
 
   /* hide native scrollbars but allow scrolling */
@@ -791,10 +791,12 @@
   .projects-row { scrollbar-width: none; -ms-overflow-style: -ms-autohiding-scrollbar; }
 
   .project-card {
-    /* Adjusted flex basis assuming reduced width due to padding */
-    /* (100% - gaps) / 3 cards. If container width is compressed effectively, we need to ensure they don't get too small */
-    flex: 0 0 calc(33.333% - 1.25rem);
-    min-width: 320px;
+    /* Fixed-size project cards to ensure consistent layout */
+    /* Widen cards to show larger previews while keeping three visible per viewport */
+    flex: 0 0 calc(36% - 1.25rem);
+    min-width: 420px;
+    /* Total card height: keep bottom/content area stable, shrink from the top (image) */
+    height: 560px;
     scroll-snap-align: center;
     border-radius: 1rem;
     overflow: hidden;
@@ -814,9 +816,9 @@
     z-index: 70;
   }
 
-  /* make images square and larger */
-  .project-image-wrap { position: relative; width: 100%; height: 360px; overflow: hidden; }
-  .project-image-wrap img { width: 100%; height: 100%; object-fit: cover; display:block; transform-origin: center center; transition: transform .6s cubic-bezier(.2,.9,.2,1); }
+  /* image area - reduced so the bottom content keeps its original space */
+  .project-image-wrap { position: relative; width: 100%; height: 280px; overflow: hidden; background: var(--color-card); }
+  .project-image-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center; display:block; transform-origin: center center; transition: transform .6s cubic-bezier(.2,.9,.2,1); }
   .project-card:hover .project-image-wrap img { transform: scale(1.08); }
 
   .project-techs { display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.5rem; }
@@ -830,8 +832,34 @@
   .filter-pill.active { background: linear-gradient(90deg, color-mix(in srgb, var(--color-highlight) 18%, transparent), color-mix(in srgb, var(--color-primary) 12%, transparent)); color: #fff; box-shadow: 0 18px 64px color-mix(in srgb, var(--color-highlight) 36%, transparent); }
 
   @media (max-width: 1023px) {
-    .project-card { flex: 0 0 80%; min-width: 260px; }
-    .project-image-wrap { height: 300px; }
+    .project-card { flex: 0 0 92%; min-width: 260px; }
+    .project-image-wrap { height: 240px; }
+    .project-card { height: 520px; }
+  }
+
+  /* Card body fills remaining card height and keeps layout stable */
+  .project-card .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem; /* keep shared with p-6 but explicit here */
+    flex: 0 0 auto;
+    /* preserve bottom/content area height so description/details don't shrink */
+    min-height: 280px;
+    overflow: hidden;
+  }
+
+  .project-card .card-body p {
+    margin: 0;
+    color: var(--color-muted-foreground);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    /* prevent description from expanding card */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   /* viewport wrapper - allow overflow for glow visibility, row handles scrolling */
