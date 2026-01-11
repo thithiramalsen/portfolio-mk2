@@ -108,7 +108,7 @@ export const About = () => {
 
             <h2 className="text-4xl md:text-5xl font-bold leading-tight animate-fade-in animation-delay-100 text-secondary-foreground">
               Building intelligent systems,
-              <span className="font-serif italic font-normal text-white">
+              <span className="font-normal text-white">
                 {" "}
                 one problem at a time.
               </span>

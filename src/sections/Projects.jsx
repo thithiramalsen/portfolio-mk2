@@ -32,7 +32,7 @@ export const Projects = () => {
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
             Projects that
-            <span className="font-serif italic font-normal text-white">
+            <span className="font-normal text-white">
               {" "}
               make an impact.
             </span>
