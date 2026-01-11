@@ -1,17 +1,5 @@
 import { Code, Server, Wrench } from "lucide-react";
-import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiGraphql,
-  SiMongodb,
-  SiGithub,
-  SiFigma,
-  SiVite,
-  SiJavascript,
-} from "react-icons/si";
+import * as SiIcons from "react-icons/si";
 
 const categories = [
   {
@@ -30,9 +18,11 @@ const categories = [
     id: "backend",
     title: "Backend & APIs",
     items: [
+      { name: "FastAPI", level: "Advanced", years: "1+", percent: 72 },
       { name: "Node.js", level: "Intermediate", years: "2+", percent: 68 },
       { name: "REST APIs", level: "Advanced", years: "3+", percent: 80 },
-      { name: "GraphQL", level: "Intermediate", years: "1+", percent: 62 },
+      { name: "SQL", level: "Advanced", years: "2+", percent: 74 },
+      { name: "LLM APIs (OpenAI, Gemini)", level: "Intermediate", years: "1+", percent: 60 },
     ],
     icon: Server,
   },
@@ -40,7 +30,11 @@ const categories = [
     id: "tools",
     title: "Tools & Others",
     items: [
+      { name: "Python", level: "Advanced", years: "3+", percent: 90 },
+      { name: "Pandas, NumPy", level: "Advanced", years: "2+", percent: 82 },
+      { name: "Scikit-learn", level: "Intermediate", years: "1+", percent: 68 },
       { name: "Git & GitHub", level: "Advanced", years: "4+", percent: 86 },
+      { name: "AWS / Azure (labs)", level: "Intermediate", years: "1+", percent: 56 },
       { name: "Figma", level: "Intermediate", years: "2+", percent: 64 },
       { name: "Vite", level: "Advanced", years: "1+", percent: 58 },
     ],
@@ -76,17 +70,26 @@ export const Skills = () => {
                         <div className="skill-icon">
                           {(() => {
                             const n = it.name.toLowerCase();
-                            if (n.includes("react")) return <SiReact className="skill-icon-image" />;
-                            if (n.includes("typescript")) return <SiTypescript className="skill-icon-image" />;
-                            if (n.includes("next")) return <SiNextdotjs className="skill-icon-image" />;
-                            if (n.includes("tailwind")) return <SiTailwindcss className="skill-icon-image" />;
-                            if (n.includes("node")) return <SiNodedotjs className="skill-icon-image" />;
-                            if (n.includes("graphql")) return <SiGraphql className="skill-icon-image" />;
-                            if (n.includes("mongodb")) return <SiMongodb className="skill-icon-image" />;
-                            if (n.includes("git") || n.includes("github")) return <SiGithub className="skill-icon-image" />;
-                            if (n.includes("vite")) return <SiVite className="skill-icon-image" />;
-                            if (n.includes("javascript")) return <SiJavascript className="skill-icon-image" />;
-                            if (n.includes("figma")) return <SiFigma className="skill-icon-image" />;
+                            if (n.includes("react")) return <SiIcons.SiReact className="skill-icon-image" />;
+                            if (n.includes("typescript")) return <SiIcons.SiTypescript className="skill-icon-image" />;
+                            if (n.includes("next")) return <SiIcons.SiNextdotjs className="skill-icon-image" />;
+                            if (n.includes("tailwind")) return <SiIcons.SiTailwindcss className="skill-icon-image" />;
+                            if (n.includes("node")) return <SiIcons.SiNodedotjs className="skill-icon-image" />;
+                            if (n.includes("graphql")) return <SiIcons.SiGraphql className="skill-icon-image" />;
+                            if (n.includes("mongodb") || n.includes("mongo")) return <SiIcons.SiMongodb className="skill-icon-image" />;
+                            if (n.includes("sql")) return <SiIcons.SiPostgresql className="skill-icon-image" />;
+                            if (n.includes("fastapi")) return SiIcons.SiFastapi ? <SiIcons.SiFastapi className="skill-icon-image" /> : <Code className="w-5 h-5 text-primary" />;
+                            if (n.includes("openai") || n.includes("llm")) return SiIcons.SiOpenai ? <SiIcons.SiOpenai className="skill-icon-image" /> : <Code className="w-5 h-5 text-primary" />;
+                            if (n.includes("python")) return <SiIcons.SiPython className="skill-icon-image" />;
+                            if (n.includes("pandas")) return SiIcons.SiPandas ? <SiIcons.SiPandas className="skill-icon-image" /> : <SiIcons.SiPython className="skill-icon-image" />;
+                            if (n.includes("numpy")) return SiIcons.SiNumpy ? <SiIcons.SiNumpy className="skill-icon-image" /> : <SiIcons.SiPython className="skill-icon-image" />;
+                            if (n.includes("scikit")) return SiIcons.SiScikitlearn ? <SiIcons.SiScikitlearn className="skill-icon-image" /> : <Code className="w-5 h-5 text-primary" />;
+                            if (n.includes("aws") || n.includes("amazon")) return SiIcons.SiAmazonaws ? <SiIcons.SiAmazonaws className="skill-icon-image" /> : <Code className="w-5 h-5 text-primary" />;
+                            if (n.includes("azure")) return SiIcons.SiMicrosoftazure ? <SiIcons.SiMicrosoftazure className="skill-icon-image" /> : <Code className="w-5 h-5 text-primary" />;
+                            if (n.includes("git") || n.includes("github")) return <SiIcons.SiGithub className="skill-icon-image" />;
+                            if (n.includes("vite")) return <SiIcons.SiVite className="skill-icon-image" />;
+                            if (n.includes("javascript")) return <SiIcons.SiJavascript className="skill-icon-image" />;
+                            if (n.includes("figma")) return <SiIcons.SiFigma className="skill-icon-image" />;
                             return <Code className="w-5 h-5 text-primary" />;
                           })()}
                         </div>

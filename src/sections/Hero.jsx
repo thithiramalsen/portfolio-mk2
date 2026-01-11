@@ -19,10 +19,10 @@ import {
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
 const heroStats = [
-  { value: "5+", label: "Years Experience" },
-  { value: "45+", label: "Projects Delivered" },
-  { value: "15+", label: "Technologies" },
-  { value: "94%", label: "Client Satisfaction" },
+  { value: "4+", label: "ML & AI Projects" },
+  { value: "10+", label: "Tech Stacks used" },
+  { value: "3.56", label: "Academic G.P.A" },
+  { value: "Data Science", label: "Focus Area" },
 ];
 
 const showcaseTech = [

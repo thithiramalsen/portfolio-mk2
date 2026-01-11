@@ -18,9 +18,9 @@ import { useState, useRef, useEffect } from "react";
 
 const projects = [
   {
-    title: "Fintech Dashboard",
+    title: "Spotify Hit Song Predictor",
     description:
-      "A comprehensive financial analytics platform with real-time data visualization, portfolio management, and AI-powered insights.",
+      "Machine learning system that predicts whether a song will become a hit using Spotify audio features.",
     image: "/projects/project1.png",
     tags: ["React", "Typescript", "NodeJS"],
     techIcons: [SiReact, SiTypescript, SiNodedotjs],
