@@ -1,12 +1,5 @@
 import { Code2, Lightbulb, Rocket, Users } from "lucide-react";
-import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiMongodb,
-} from "react-icons/si";
+import * as SiIcons from "react-icons/si";
 
 const highlights = [
   {
@@ -103,20 +96,93 @@ export const About = () => {
           <h3 className="text-2xl md:text-3xl font-semibold text-foreground">Tech Stack & Tools I Work With</h3>
           <p className="text-muted-foreground mt-2 mb-8">Technologies I work with to build solutions to real-world problems.</p>
 
-          <div className="tech-cards container mx-auto px-6 flex flex-wrap justify-center gap-6">
-            {[
-              { id: "react", label: "React.js", Icon: SiReact },
-              { id: "nextjs", label: "Next.js", Icon: SiNextdotjs },
-              { id: "ts", label: "TypeScript", Icon: SiTypescript },
-              { id: "tailwind", label: "Tailwind CSS", Icon: SiTailwindcss },
-              { id: "node", label: "Node.js", Icon: SiNodedotjs },
-              { id: "mongo", label: "MongoDB", Icon: SiMongodb },
-            ].map((tech) => (
-              <div key={tech.id} className="tech-card">
-                <tech.Icon className="tech-card-icon" aria-hidden="true" />
-                <div className="mt-3 text-sm text-muted-foreground">{tech.label}</div>
+          <div className="mt-8">
+            {/* Ticker for md+ screens, keep tech-cards visible on small screens for responsiveness */}
+            <div className="hidden md:block">
+              <div className="ticker">
+                <div className="ticker-track">
+                  {(
+                    [
+                      { label: "React.js", Icon: SiIcons.SiReact },
+                      { label: "JavaScript", Icon: SiIcons.SiJavascript },
+                      { label: "TypeScript", Icon: SiIcons.SiTypescript },
+                      { label: "Next.js", Icon: SiIcons.SiNextdotjs },
+                      { label: "Tailwind CSS", Icon: SiIcons.SiTailwindcss },
+                      { label: "Vite", Icon: SiIcons.SiVite },
+                      { label: "FastAPI", Icon: SiIcons.SiFastapi },
+                      { label: "Node.js", Icon: SiIcons.SiNodedotjs },
+                      { label: "REST APIs", Icon: Code2 },
+                      { label: "MongoDB", Icon: SiIcons.SiMongodb },
+                      { label: "SQL", Icon: SiIcons.SiPostgresql },
+                      { label: "LLM APIs", Icon: SiIcons.SiOpenai },
+                      { label: "Python", Icon: SiIcons.SiPython },
+                      { label: "Pandas", Icon: SiIcons.SiPandas },
+                      { label: "NumPy", Icon: SiIcons.SiNumpy },
+                      { label: "Scikit-learn", Icon: SiIcons.SiScikitlearn },
+                      { label: "GitHub", Icon: SiIcons.SiGithub },
+                      { label: "AWS", Icon: SiIcons.SiAmazonaws },
+                      { label: "Azure", Icon: SiIcons.SiMicrosoftazure },
+                      { label: "Figma", Icon: SiIcons.SiFigma },
+                    ]
+                  ).concat(
+                    [
+                      { label: "React.js", Icon: SiIcons.SiReact },
+                      { label: "JavaScript", Icon: SiIcons.SiJavascript },
+                      { label: "TypeScript", Icon: SiIcons.SiTypescript },
+                      { label: "Next.js", Icon: SiIcons.SiNextdotjs },
+                      { label: "Tailwind CSS", Icon: SiIcons.SiTailwindcss },
+                      { label: "Vite", Icon: SiIcons.SiVite },
+                      { label: "FastAPI", Icon: SiIcons.SiFastapi },
+                      { label: "Node.js", Icon: SiIcons.SiNodedotjs },
+                      { label: "REST APIs", Icon: Code2 },
+                      { label: "MongoDB", Icon: SiIcons.SiMongodb },
+                      { label: "SQL", Icon: SiIcons.SiPostgresql },
+                      { label: "LLM APIs", Icon: SiIcons.SiOpenai },
+                      { label: "Python", Icon: SiIcons.SiPython },
+                      { label: "Pandas", Icon: SiIcons.SiPandas },
+                      { label: "NumPy", Icon: SiIcons.SiNumpy },
+                      { label: "Scikit-learn", Icon: SiIcons.SiScikitlearn },
+                      { label: "GitHub", Icon: SiIcons.SiGithub },
+                      { label: "AWS", Icon: SiIcons.SiAmazonaws },
+                      { label: "Azure", Icon: SiIcons.SiMicrosoftazure },
+                      { label: "Figma", Icon: SiIcons.SiFigma },
+                    ]
+                  ).map((tech, i) => (
+                    <div key={`${tech.label}-${i}`} className="ticker-item flex flex-col items-center justify-center">
+                      {tech.Icon ? (
+                        <tech.Icon className="text-primary" aria-hidden="true" />
+                      ) : (
+                        <Code2 className="text-primary" aria-hidden="true" />
+                      )}
+                      <div className="text-sm font-medium mt-2">{tech.label}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
+            </div>
+
+            {/* Small screens: keep original responsive tech-cards grid */}
+            <div className="block md:hidden text-center">
+              <div className="tech-cards container mx-auto px-6 flex flex-wrap justify-center gap-6">
+                {[
+                  { id: "react", label: "React.js", Icon: SiIcons.SiReact },
+                  { id: "nextjs", label: "Next.js", Icon: SiIcons.SiNextdotjs },
+                  { id: "ts", label: "TypeScript", Icon: SiIcons.SiTypescript },
+                  { id: "tailwind", label: "Tailwind CSS", Icon: SiIcons.SiTailwindcss },
+                  { id: "node", label: "Node.js", Icon: SiIcons.SiNodedotjs },
+                  { id: "mongo", label: "MongoDB", Icon: SiIcons.SiMongodb },
+                ].map((tech) => (
+                  <div key={tech.id} className="tech-card">
+                    {tech.Icon ? (
+                      <tech.Icon className="tech-card-icon" aria-hidden="true" />
+                    ) : (
+                      <Code2 className="tech-card-icon" aria-hidden="true" />
+                    )}
+                    <div className="mt-3 text-sm text-muted-foreground">{tech.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
