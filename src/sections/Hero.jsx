@@ -88,8 +88,8 @@ export const Hero = () => {
             </div>
 
             <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
-              <Button size="default" href="#contact" className="px-8">
-                Contact Me <ArrowRight className="w-5 h-5" />
+              <Button size="default" href="#projects" className="px-8">
+                View Projects <ArrowRight className="w-5 h-5" />
               </Button>
               <AnimatedBorderButton>
                 <Download className="w-5 h-5" />
