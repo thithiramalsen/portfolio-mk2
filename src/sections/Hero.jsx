@@ -162,7 +162,7 @@ export const Hero = () => {
               <div className="inner glass">
                 <img
                   src="/profile-photo.jpg"
-                  alt="Pedro Machado"
+                  alt="Thithira Malsen"
                   className="w-full max-w-[420px] md:max-w-[480px] aspect-[3/4] object-cover rounded-[1rem] mx-auto"
                 />
 
