@@ -11,26 +11,26 @@ import {
 const highlights = [
   {
     icon: Code2,
-    title: "Clean Code",
+    title: "Data-Driven Design",
     description:
-      "Writing maintainable, scalable code that stands the test of time.",
+      "Designing systems by understanding the data first, then building models and pipelines around it.",
   },
   {
     icon: Rocket,
-    title: "Performance",
+    title: "Scalable Systems",
     description:
-      "Optimizing for speed and delivering lightning-fast user experiences.",
+      "Building modular backends and APIs that support machine learning and automation workflows.",
   },
   {
     icon: Users,
-    title: "Collaboration",
-    description: "Working closely with teams to bring ideas to life.",
+    title: "AI Integration",
+    description: "Integrating LLMs and AI services into real applications using FastAPI and modern tooling.",
   },
   {
     icon: Lightbulb,
-    title: "Innovation",
+    title: "Problem Solving",
     description:
-      "Staying ahead with the latest technologies and best practices.",
+      "Breaking down complex problems into structured, testable, and maintainable solutions.",
   },
 ];
 
@@ -48,39 +48,33 @@ export const About = () => {
             </div>
 
             <h2 className="text-4xl md:text-5xl font-bold leading-tight animate-fade-in animation-delay-100 text-secondary-foreground">
-              Building the future,
+              Building intelligent systems,
               <span className="font-serif italic font-normal text-white">
                 {" "}
-                one component at a time.
+                one problem at a time.
               </span>
             </h2>
 
             <div className="space-y-4 text-muted-foreground animate-fade-in animation-delay-200">
               <p>
-                I'm a passionate software engineer with over 5 years of
-                experience crafting digital products that make a difference. My
-                journey started with a curiosity for how things work on the web,
-                and it has evolved into a deep expertise in modern frontend
-                technologies.
+                I’m a third-year Data Science undergraduate with hands-on experience
+                in machine learning, AI-powered applications, and full-stack development.
               </p>
               <p>
-                I specialize in React, Next.js, and TypeScript, building
-                everything from sleek landing pages to complex enterprise
-                applications. My approach combines technical excellence with a
-                keen eye for design and user experience.
+                My work focuses on building intelligent systems — from predictive models
+                and data pipelines to APIs and web platforms that make those models usablein the real world.
               </p>
               <p>
-                When I'm not coding, you'll find me exploring new technologies,
-                contributing to open-source projects, or sharing knowledge with
-                the developer community.
+                I care about clarity, structure, and long-term maintainability.
+                Whether it’s an ML pipeline or a backend service, I start by understanding
+                the data, then design systems that scale and make sense.
               </p>
             </div>
 
             <div className="glass rounded-2xl p-6 glow-border animate-fade-in animation-delay-300">
               <p className="text-lg font-medium italic text-foreground">
-                "My mission is to create digital experiences that are not just
-                functional, but truly delightful — products that users love to
-                use and developers love to maintain."
+                “My goal is to build systems that are not just intelligent,
+                but reliable, explainable, and useful in real-world scenarios.”
               </p>
             </div>
           </div>
@@ -106,8 +100,8 @@ export const About = () => {
         </div>
         {/* Tech Stack & Expertise - added at bottom of About */}
         <div className="mt-20 text-center animate-fade-in">
-          <h3 className="text-2xl md:text-3xl font-semibold text-foreground">Tech Stack & Expertise</h3>
-          <p className="text-muted-foreground mt-2 mb-8">Technologies I work with to build amazing products</p>
+          <h3 className="text-2xl md:text-3xl font-semibold text-foreground">Tech Stack & Tools I Work With</h3>
+          <p className="text-muted-foreground mt-2 mb-8">Technologies I work with to build solutions to real-world problems.</p>
 
           <div className="tech-cards container mx-auto px-6 flex flex-wrap justify-center gap-6">
             {[
