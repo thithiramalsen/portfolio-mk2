@@ -127,7 +127,7 @@ export const Hero = () => {
 
             <div className="relative flex justify-center lg:justify-end">
             <div className="hero-orb" aria-hidden="true" />
-              <div className="segmented-frame animate-fade-in animation-delay-300 max-w-[420px] w-full">
+              <div className="segmented-frame group animate-fade-in animation-delay-300 max-w-[420px] w-full">
               <div className="border-segments" aria-hidden="true">
                 <span className="border-segment seg-tl-h" />
                 <span className="border-segment seg-tl-v" />
@@ -138,6 +138,26 @@ export const Hero = () => {
                 <span className="border-segment seg-br-h" />
                 <span className="border-segment seg-br-v" />
               </div>
+
+              {/* Animated SVG border (matches AnimatedBorderButton animation on hover) */}
+              <svg
+                className="absolute inset-0 pointer-events-none hero-frame-border"
+                viewBox="0 0 420 560"
+                preserveAspectRatio="none"
+                style={{ overflow: "visible", zIndex: 50 }}
+              >
+                <path
+                  d="M 30,1 A 29,29 0 0 0 1,30 L 1,530 A 29,29 0 0 0 30,559 L 390,559 A 29,29 0 0 0 419,530 L 419,30 A 29,29 0 0 0 390,1 Z"
+                  fill="none"
+                  stroke="var(--color-primary)"
+                  strokeWidth="2"
+                  strokeDasharray="2000 2000"
+                  strokeDashoffset="2000"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="animated-border-path"
+                />
+              </svg>
 
               <div className="inner glass">
                 <img

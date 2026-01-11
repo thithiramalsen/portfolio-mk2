@@ -459,6 +459,37 @@
     to { transform: scaleY(1); opacity: 1; }
   }
 
+  /* Continuous subtle motion for segmented frame outer lines */
+  @keyframes seg-move-x {
+    0% { transform: translateX(-12px); opacity: 0.82; }
+    50% { transform: translateX(12px); opacity: 1; }
+    100% { transform: translateX(-12px); opacity: 0.82; }
+  }
+
+  @keyframes seg-move-y {
+    0% { transform: translateY(-12px); opacity: 0.82; }
+    50% { transform: translateY(12px); opacity: 1; }
+    100% { transform: translateY(-12px); opacity: 0.82; }
+  }
+
+  .border-segment {
+    /* allow GPU acceleration for smooth motion */
+    will-change: transform, opacity;
+    opacity: 0.98;
+  }
+
+  /* Horizontal segments - gentle left/right motion with staggered delays */
+  .seg-tl-h { animation: seg-move-x 4.8s ease-in-out infinite; animation-delay: 0.1s; }
+  .seg-tr-h { animation: seg-move-x 5.1s ease-in-out infinite; animation-delay: 0.3s; }
+  .seg-bl-h { animation: seg-move-x 5.4s ease-in-out infinite; animation-delay: 0.5s; }
+  .seg-br-h { animation: seg-move-x 5.7s ease-in-out infinite; animation-delay: 0.7s; }
+
+  /* Vertical segments - gentle up/down motion with staggered delays */
+  .seg-tl-v { animation: seg-move-y 4.5s ease-in-out infinite; animation-delay: 0.05s; }
+  .seg-tr-v { animation: seg-move-y 4.9s ease-in-out infinite; animation-delay: 0.25s; }
+  .seg-bl-v { animation: seg-move-y 5.2s ease-in-out infinite; animation-delay: 0.45s; }
+  .seg-br-v { animation: seg-move-y 5.6s ease-in-out infinite; animation-delay: 0.65s; }
+
   .hero-tech-icon {
     display: inline-flex;
     align-items: center;
