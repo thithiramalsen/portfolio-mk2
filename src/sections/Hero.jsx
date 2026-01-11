@@ -42,7 +42,7 @@ const socialLinks = [
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-[78vh] lg:min-h-[88vh] flex items-center overflow-visible">
+    <section id="hero" className="relative min-h-[78vh] lg:min-h-[88vh] flex items-center overflow-visible">
       <div className="absolute inset-0 hero-gradient" />
       <div className="absolute inset-0 hero-fireflies pointer-events-none" aria-hidden="true">
         <span className="firefly" />

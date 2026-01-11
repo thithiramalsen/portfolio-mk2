@@ -1,28 +1,25 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "@/layout/Navbar";
-import { Hero } from "@/sections/Hero";
-import { About } from "@/sections/About";
-import { Skills } from "@/sections/Skills";
-import { Projects } from "@/sections/Projects";
-import { Experience } from "@/sections/Experience";
-import { Testimonials } from "@/sections/Testimonials";
-import { Contact } from "@/sections/Contact";
 import { Footer } from "./layout/Footer";
+import Home from "@/pages/Home";
+import ProjectsPage from "@/pages/ProjectsPage";
+import ProjectDetail from "@/pages/ProjectDetail";
 
 function App() {
   return (
-    <div className="min-h-screen overflow-x-hidden">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Testimonials />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen overflow-x-hidden">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/projects/:id" element={<ProjectDetail />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
