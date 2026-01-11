@@ -59,16 +59,15 @@ export const Contact = () => {
         );
       }
 
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        },
-        publicKey
-      );
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        name: formData.name,
+        email: formData.email,
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
       setSubmitStatus({
         type: "success",
@@ -76,12 +75,9 @@ export const Contact = () => {
       });
       setFormData({ name: "", email: "", message: "" });
     } catch (err) {
-      console.error("EmailJS error:", error);
-      setSubmitStatus({
-        type: "error",
-        message:
-          error.text || "Failed to send message. Please try again later.",
-      });
+      console.error("EmailJS error:", err);
+      const message = err?.text || err?.statusText || err?.message || "Failed to send message. Please try again later.";
+      setSubmitStatus({ type: "error", message });
     } finally {
       setIsLoading(false);
     }
@@ -135,20 +131,14 @@ export const Contact = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="email"
-                  type="email"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Email
-                </label>
+                <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
                 <input
+                  id="email"
+                  type="email"
                   required
                   placeholder="your@email.com"
                   value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                 />
               </div>
