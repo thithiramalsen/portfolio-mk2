@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Roboto+Condensed:wght@300;400;500;700&display=swap");
 @import "tailwindcss";
 
@@ -43,7 +44,7 @@
     background-attachment: fixed;
     background-size: cover;
     color: var(--color-foreground);
-    font-family: "Roboto Condensed", sans-serif;
+    font-family: "Urbanist", sans-serif;
     letter-spacing: 0.02em;
   }
 
@@ -53,12 +54,12 @@
   h4,
   h5,
   h6 {
-    font-family: "Cinzel", serif;
-    letter-spacing: 0.04em;
+    font-family: "Urbanist", sans-serif;
+    letter-spacing: 0.02em;
   }
 
   .font-serif {
-    font-family: "Cinzel", serif;
+    font-family: "Urbanist", sans-serif;
   }
 }
 
@@ -85,6 +86,110 @@
     box-shadow: 0 0 32px color-mix(in srgb, var(--color-primary) 18%, transparent);
   }
 
+  /* lighter glass for small icon buttons */
+  .glass-light {
+    background-color: color-mix(in srgb, var(--color-surface) 48%, transparent);
+    backdrop-filter: blur(10px);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 14%, transparent);
+    box-shadow: 0 8px 28px color-mix(in srgb, var(--color-primary) 8%, transparent);
+    color: var(--color-foreground);
+  }
+
+  /* small icon button helper */
+  .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 0.75rem;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease, opacity .18s ease;
+  }
+
+  .btn-icon:hover {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 22px 64px color-mix(in srgb, var(--color-highlight) 28%, transparent), 0 6px 18px color-mix(in srgb, var(--color-primary) 18%, transparent) inset;
+  }
+
+  /* contrasting button style for project actions */
+  .btn-contrast {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-foreground) 6%, transparent), color-mix(in srgb, var(--color-surface) 12%, transparent));
+    color: var(--color-foreground);
+    border: 1px solid color-mix(in srgb, var(--color-highlight) 22%, transparent);
+    box-shadow: 0 8px 28px color-mix(in srgb, var(--color-highlight) 30%, transparent);
+    backdrop-filter: blur(8px);
+  }
+
+  .btn-contrast:focus {
+    outline: 2px solid color-mix(in srgb, var(--color-highlight) 45%, transparent);
+    outline-offset: 2px;
+  }
+
+  /* Slightly reduce overlay fade to keep buttons visible on touch */
+  .project-image-wrap .btn-contrast { opacity: 0.98; }
+
+  /* Make icons white and glowing inside contrast buttons */
+  .btn-contrast svg { color: #ffffff; filter: drop-shadow(0 6px 18px rgba(255,76,53,0.28)); }
+
+  /* Scroll trigger zones (invisible) to reveal scroll buttons when hovered in vicinity */
+  .scroll-trigger {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 80%;
+    width: 20%;
+    max-width: 14rem;
+    /* low z so buttons (higher z) still receive clicks */
+    z-index: 100;
+    /* allow hover to trigger parent :hover */
+    pointer-events: auto;
+    background: transparent;
+  }
+  .scroll-trigger.left { left: 0; }
+  .scroll-trigger.right { right: 0; }
+
+  /* Make scroll buttons larger and appear when hovering the entire scroller or trigger zones */
+  .projects-scroll-btn {
+    opacity: 0 !important;
+    transition: opacity .12s ease, transform .12s ease, box-shadow .12s ease !important;
+    width: 6rem !important; /* ~96px */
+    height: 6rem !important;
+    border-radius: 1rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.0rem !important;
+    /* High priority z-index to ensure they are clickable over cards */
+    z-index: 2000 !important;
+    /* Raise slightly higher to avoid conflict with bottom-right project buttons */
+    top: 45%; 
+    transform: translateY(-50%);
+    /* Glass style for big buttons */
+    background: color-mix(in srgb, var(--color-surface) 68%, transparent) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 20%, transparent) !important;
+    color: var(--color-foreground) !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+  }
+
+  /* Reveal buttons when hovering the wrapper (including triggers) */
+  .relative:hover .projects-scroll-btn { opacity: 1 !important; }
+
+  .projects-scroll-btn.left { left: 1rem !important; }
+  .projects-scroll-btn.right { right: 1rem !important; }
+  
+  /* Bigger icons inside scroll buttons */
+  .projects-scroll-btn svg { width: 36px !important; height: 36px !important; stroke-width: 2 !important; }
+
+  .projects-scroll-btn:hover { 
+    /* Keep centering transform, add scale */
+    transform: translateY(-50%) scale(1.04); 
+    box-shadow: 0 28px 72px color-mix(in srgb, var(--color-highlight) 36%, transparent); 
+    border-color: color-mix(in srgb, var(--color-highlight) 40%, transparent); 
+    color: var(--color-highlight); 
+  }
+
   .glow-text {
     text-shadow: 0 0 36px
       color-mix(in srgb, var(--color-primary) 60%, transparent);
@@ -94,6 +199,792 @@
     box-shadow: 0 0 20px
         color-mix(in srgb, var(--color-primary) 25%, transparent),
       inset 0 0 20px color-mix(in srgb, var(--color-primary) 10%, transparent);
+  }
+
+  .hero-gradient {
+    background:
+      radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--color-highlight) 18%, transparent) 0%, transparent 42%),
+      radial-gradient(circle at 78% 8%, color-mix(in srgb, var(--color-primary) 22%, transparent) 0%, transparent 48%),
+      radial-gradient(circle at 86% 78%, color-mix(in srgb, var(--color-highlight) 16%, transparent) 0%, transparent 40%),
+      linear-gradient(180deg, color-mix(in srgb, var(--color-muted) 65%, transparent) 0%, transparent 100%);
+    opacity: 0.9;
+    filter: saturate(115%);
+  }
+
+  .hero-noise {
+    background-image:
+      radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.06) 0%, transparent 55%),
+      radial-gradient(circle at 82% 70%, rgba(255, 255, 255, 0.04) 0%, transparent 52%),
+      linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.7) 100%);
+    mix-blend-mode: screen;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--color-surface) 72%, transparent) 0%, color-mix(in srgb, var(--color-primary) 18%, transparent) 100%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 45%, transparent);
+    border-radius: 9999px;
+    padding: 0.6rem 1.4rem;
+    box-shadow: 0 18px 45px color-mix(in srgb, var(--color-primary) 28%, transparent);
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    backdrop-filter: blur(18px);
+  }
+
+  .hero-badge-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--color-primary) 65%, transparent) 0%, transparent 100%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 55%, transparent);
+    box-shadow: 0 0 22px color-mix(in srgb, var(--color-primary) 38%, transparent);
+    color: var(--color-primary-foreground);
+  }
+
+  .hero-stat {
+    min-width: 9rem;
+    padding: 1.15rem 1.35rem;
+    border-radius: 1.5rem;
+    background: linear-gradient(145deg, color-mix(in srgb, var(--color-surface) 88%, transparent) 0%, color-mix(in srgb, var(--color-primary) 16%, transparent) 100%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 32%, transparent);
+    box-shadow: 0 35px 58px color-mix(in srgb, var(--color-primary) 24%, transparent);
+    backdrop-filter: blur(22px);
+  }
+
+  /* Add a subtle vertical divider between adjacent hero stats (used in Hero.jsx) */
+  .stat-divider {
+    position: relative;
+    padding-right: 1.35rem;
+    margin-right: 0.4rem;
+  }
+
+  .stat-divider::after {
+    content: "";
+    position: absolute;
+    right: -8px;
+    top: 18%;
+    height: 64%;
+    width: 1px;
+    background: color-mix(in srgb, var(--color-primary) 28%, transparent);
+    opacity: 0.55;
+    border-radius: 1px;
+  }
+
+  /* Clean stats layout (no heavy glass cards) */
+  .hero-stats-clean { gap: 3rem; }
+
+  .hero-stat-simple {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0 0.75rem;
+    min-width: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.125rem;
+    color: var(--color-primary-foreground);
+    text-align: center;
+  }
+
+  .hero-stat-simple .hero-stat-value {
+    font-size: 2rem;
+    color: var(--color-highlight);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: none;
+  }
+
+  .hero-stat-simple .hero-stat-label {
+    font-size: 0.85rem;
+    color: var(--color-muted-foreground);
+    text-transform: none;
+    letter-spacing: 0.02em;
+    margin-top: 0.125rem;
+    position: static;
+    line-height: 1.05;
+    max-width: 8rem;
+    word-wrap: break-word;
+  }
+
+  /* Reduce visual weight of divider for the clean style */
+  .hero-stats-clean .stat-divider::after { background: var(--color-highlight); opacity: 0.95; right: -12px; top: 6%; height: 88%; width: 2px; box-shadow: 0 0 12px color-mix(in srgb, var(--color-highlight) 45%, transparent); }
+
+  .hero-stat-value {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-primary-foreground);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .hero-stat-label {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.75rem;
+     position: absolute;
+     bottom: 22px;
+     left: 8px;
+  }
+
+  .hero-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
+    transform: translateY(0) scale(.98);
+    transition: transform .35s ease, box-shadow .35s ease;
+    color: var(--color-muted-foreground);
+    box-shadow: 0 18px 36px color-mix(in srgb, var(--color-primary) 18%, transparent), inset 0 0 12px color-mix(in srgb, var(--color-primary) 12%, transparent);
+  }
+
+  /* TM logo gradient: bold and fades to the right */
+  .tm-logo {
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* bright red -> dark red gradient */
+    background-image: linear-gradient(90deg, var(--color-highlight) 0%, var(--color-primary) 70%);
+    /* ensure gradient aligns with larger type */
+    padding-right: 6px;
+  }
+
+  .hero-social:hover {
+    background: color-mix(in srgb, var(--color-primary) 25%, transparent);
+    color: var(--color-primary-foreground);
+    border-color: color-mix(in srgb, var(--color-primary) 45%, transparent);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--color-primary) 35%, transparent);
+  }
+
+  .hero-orb {
+    position: absolute;
+    inset: -8% -10% -6% -6%;
+    border-radius: 50% / 45%;
+    background: radial-gradient(circle at 45% 45%, color-mix(in srgb, var(--color-primary) 32%, transparent) 0%, transparent 68%);
+    filter: blur(56px);
+    opacity: 0.7;
+    animation: orb-pulse 16s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .segmented-frame {
+    position: relative;
+    /* reduce outer padding so inner glass grows and image fills more */
+    padding: 0.35rem;
+    border-radius: 1.6rem;
+  }
+
+  .segmented-frame::before {
+    /* Removed rotating conic ring; using corner segments instead */
+    display: none;
+  }
+
+  .segmented-frame::after {
+    content: "";
+    position: absolute;
+    inset: -0.45rem;
+    border-radius: inherit;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 32%, transparent);
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  .segmented-frame > .inner {
+    position: relative;
+    z-index: 30;
+    border-radius: inherit;
+    overflow: hidden;
+    padding: 0.15rem;
+    background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 0 14px color-mix(in srgb, var(--color-primary) 10%, transparent);
+  }
+
+  .segmented-frame {
+    --seg-offset: 12px;
+  }
+
+  .border-segments {
+    position: absolute;
+    /* reduce negative inset so segments stay nearer the frame and avoid clipping */
+    inset: calc(-0.5 * var(--seg-offset));
+    z-index: 3;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .border-segment {
+    position: absolute;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--color-primary) 85%, transparent), transparent);
+    border-radius: 4px;
+    will-change: transform, opacity;
+    opacity: 0.95;
+  }
+
+  /* Top-left */
+  .seg-tl-h { top: calc(-1 * var(--seg-offset)); left: 18px; height: 4px; width: 30%; transform-origin: left; transform: scaleX(0); animation: drawX .6s ease forwards .18s; }
+  .seg-tl-v { top: 18px; left: calc(-1 * var(--seg-offset)); width: 4px; height: 30%; transform-origin: top; transform: scaleY(0); animation: drawY .6s ease forwards .28s; }
+
+  /* Top-right */
+  .seg-tr-h { top: calc(-1 * var(--seg-offset)); right: 18px; height: 4px; width: 30%; transform-origin: right; transform: scaleX(0); animation: drawX .6s ease forwards .22s; }
+  .seg-tr-v { top: 18px; right: calc(-1 * var(--seg-offset)); width: 4px; height: 30%; transform-origin: top; transform: scaleY(0); animation: drawY .6s ease forwards .32s; }
+
+  /* Bottom-left */
+  .seg-bl-h { bottom: calc(-1 * var(--seg-offset)); left: 18px; height: 4px; width: 30%; transform-origin: left; transform: scaleX(0); animation: drawX .6s ease forwards .26s; }
+  .seg-bl-v { bottom: 18px; left: calc(-1 * var(--seg-offset)); width: 4px; height: 30%; transform-origin: bottom; transform: scaleY(0); animation: drawY .6s ease forwards .36s; }
+
+  /* Bottom-right */
+  .seg-br-h { bottom: calc(-1 * var(--seg-offset)); right: 18px; height: 4px; width: 30%; transform-origin: right; transform: scaleX(0); animation: drawX .6s ease forwards .30s; }
+  .seg-br-v { bottom: 18px; right: calc(-1 * var(--seg-offset)); width: 4px; height: 30%; transform-origin: bottom; transform: scaleY(0); animation: drawY .6s ease forwards .40s; }
+
+  @keyframes drawX {
+    from { transform: scaleX(0); opacity: 0; }
+    to { transform: scaleX(1); opacity: 1; }
+  }
+
+  @keyframes drawY {
+    from { transform: scaleY(0); opacity: 0; }
+    to { transform: scaleY(1); opacity: 1; }
+  }
+
+  .hero-tech-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 6px;
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--color-surface) 78%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 42%, transparent);
+    color: var(--color-highlight);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+
+  .hero-tech-icon:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 10px 28px color-mix(in srgb, var(--color-primary) 50%, transparent);
+  }
+
+  /* Breathe animation for tech panel */
+  .hero-tech-panel {
+    animation: tech-breathe 6s ease-in-out infinite;
+  }
+
+  @keyframes tech-breathe {
+     0% { transform: translateY(0) scale(.98); box-shadow: 0 12px 36px color-mix(in srgb, var(--color-primary) 38%, transparent), inset 0 0 16px color-mix(in srgb, var(--color-primary) 18%, transparent); }
+     50% { transform: translateY(-10px) scale(1); box-shadow: 0 26px 64px color-mix(in srgb, var(--color-primary) 64%, transparent), inset 0 0 28px color-mix(in srgb, var(--color-primary) 36%, transparent); }
+     100% { transform: translateY(0) scale(.98); box-shadow: 0 12px 36px color-mix(in srgb, var(--color-primary) 38%, transparent), inset 0 0 16px color-mix(in srgb, var(--color-primary) 18%, transparent); }
+  }
+
+  /* Fireflies / floating dots */
+  .hero-fireflies {
+    z-index: 6;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .hero-fireflies::before,
+  .hero-fireflies::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  /* Create multiple floating dots using generated elements via pseudo elements and extra spans (JS-free) */
+  .hero-fireflies .firefly { display: block; position: absolute; border-radius: 9999px; opacity: 0.95; transform: translate3d(0,0,0); }
+
+  /* We'll place 12 dots with varying positions */
+  .hero-fireflies .firefly:nth-child(1)  { width:6px; height:6px; left:6%;  top:18%;  background: #ff3b3b; animation: fly 8s ease-in-out infinite 0s, flicker .9s linear infinite; }
+  .hero-fireflies .firefly:nth-child(2)  { width:4px; height:4px; left:22%; top:25%;  background: #ffd74d; animation: fly 10s ease-in-out infinite .6s, flicker .8s linear infinite; }
+  .hero-fireflies .firefly:nth-child(3)  { width:5px; height:5px; left:40%; top:12%;  background: #ff3b3b; animation: fly 9s ease-in-out infinite .3s, flicker 1.1s linear infinite; }
+  .hero-fireflies .firefly:nth-child(4)  { width:4px; height:4px; left:60%; top:22%;  background: #ffd74d; animation: fly 11s ease-in-out infinite .9s, flicker .7s linear infinite; }
+  .hero-fireflies .firefly:nth-child(5)  { width:6px; height:6px; left:82%; top:10%;  background: #ff3b3b; animation: fly 7.5s ease-in-out infinite .2s, flicker .95s linear infinite; }
+  .hero-fireflies .firefly:nth-child(6)  { width:5px; height:5px; left:12%; top:64%;  background: #ffd74d; animation: fly 12s ease-in-out infinite 0s, flicker .85s linear infinite; }
+  .hero-fireflies .firefly:nth-child(7)  { width:4px; height:4px; left:30%; top:70%;  background: #ff3b3b; animation: fly 9.5s ease-in-out infinite .4s, flicker .9s linear infinite; }
+  .hero-fireflies .firefly:nth-child(8)  { width:5px; height:5px; left:48%; top:78%;  background: #ffd74d; animation: fly 10.5s ease-in-out infinite .7s, flicker .77s linear infinite; }
+  .hero-fireflies .firefly:nth-child(9)  { width:4px; height:4px; left:68%; top:66%;  background: #ff3b3b; animation: fly 8.5s ease-in-out infinite .5s, flicker .88s linear infinite; }
+  .hero-fireflies .firefly:nth-child(10) { width:6px; height:6px; left:86%; top:56%;  background: #ffd74d; animation: fly 13s ease-in-out infinite .2s, flicker 1.05s linear infinite; }
+  .hero-fireflies .firefly:nth-child(11) { width:5px; height:5px; left:72%; top:30%;  background: #ff3b3b; animation: fly 9.9s ease-in-out infinite .15s, flicker .9s linear infinite; }
+  .hero-fireflies .firefly:nth-child(12) { width:4px; height:4px; left:52%; top:40%;  background: #ffd74d; animation: fly 11.7s ease-in-out infinite .45s, flicker .95s linear infinite; }
+
+  @keyframes fly {
+    0% { transform: translateY(0) translateX(0) scale(1); opacity: .9 }
+    25% { transform: translateY(-6px) translateX(4px) scale(.95); opacity: .7 }
+    50% { transform: translateY(0) translateX(-3px) scale(1.05); opacity: 1 }
+    75% { transform: translateY(6px) translateX(2px) scale(.9); opacity: .75 }
+    100% { transform: translateY(0) translateX(0) scale(1); opacity: .9 }
+  }
+
+  @keyframes flicker {
+    0% { opacity: 1; filter: drop-shadow(0 0 8px currentColor); }
+    50% { opacity: .35; filter: drop-shadow(0 0 2px currentColor); }
+    100% { opacity: 1; filter: drop-shadow(0 0 8px currentColor); }
+  }
+
+  .hero-floating-card {
+    position: absolute;
+    padding: 0.6rem 0.9rem;
+    border-radius: 0.9rem;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--color-surface) 82%, transparent) 0%, color-mix(in srgb, var(--color-primary) 18%, transparent) 100%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 38%, transparent);
+    box-shadow: 0 18px 36px color-mix(in srgb, var(--color-primary) 18%, transparent);
+    z-index: 40;
+    backdrop-filter: blur(20px);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .hero-floating-card--top-left {
+    top: 12px;
+    left: 12px;
+    animation-delay: 0.15s;
+  }
+
+  .hero-floating-card--bottom-right {
+    bottom: 12px;
+    right: 12px;
+    animation-delay: 0.4s;
+  }
+
+  .hero-floating-card--top-right {
+    top: 12px;
+    right: 12px;
+    animation-delay: 0.35s;
+  }
+
+  .hero-tech-panel {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--color-primary) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 48%, transparent);
+    box-shadow: 0 12px 40px color-mix(in srgb, var(--color-primary) 40%, transparent), inset 0 0 18px color-mix(in srgb, var(--color-primary) 18%, transparent);
+    backdrop-filter: blur(8px);
+    align-items: center;
+    z-index: 40;
+    transform: translateY(0) scale(.96);
+  }
+
+  /* Tech cards used in About section */
+  .tech-cards { max-width: 1200px; }
+
+  .tech-card {
+    width: 160px;
+    height: 120px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    transition: transform .28s ease, box-shadow .28s ease;
+    will-change: transform, box-shadow;
+  }
+
+  .tech-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 18px 48px color-mix(in srgb, var(--color-highlight) 40%, transparent), inset 0 0 18px color-mix(in srgb, var(--color-primary) 10%, transparent);
+  }
+
+  .tech-card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-right: 12px;
+    color: var(--color-primary);
+  }
+
+  .tech-card:hover .tech-card-icon {
+    transform: scale(1.18);
+    filter: none;
+    filter: drop-shadow(0 8px 28px color-mix(in srgb, var(--color-highlight) 55%, transparent));
+  }
+
+  @media (max-width: 1023px) {
+    .tech-card { width: 140px; height: 110px; }
+    .tech-card-icon { width: 40px; height: 40px; }
+  }
+
+  /* Skill list icons */
+  .skill-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 8px;
+    border-radius: 12px;
+    /* lighter surface to contrast the main card */
+    background: color-mix(in srgb, var(--color-surface) 60%, var(--color-foreground) 6%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+    box-shadow: 0 8px 22px color-mix(in srgb, var(--color-primary) 12%, transparent), inset 0 0 8px color-mix(in srgb, var(--color-foreground) 6%, transparent);
+    transition: transform .24s ease, box-shadow .24s ease;
+    color: var(--color-highlight);
+    backdrop-filter: blur(8px);
+  }
+
+  .skill-icon:hover {
+    transform: translateY(-3px) scale(1.06);
+    box-shadow: 0 22px 60px color-mix(in srgb, var(--color-highlight) 40%, transparent), inset 0 0 16px color-mix(in srgb, var(--color-primary) 8%, transparent);
+  }
+
+  .skill-icon-image {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    color: inherit;
+    filter: none;
+  }
+
+  .skill-icon-fallback {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background: #f4c542;
+    color: #111;
+    font-weight: 700;
+  }
+
+  /* Skills cards (matching green design but in red scheme) */
+  .skills-card {
+    transition: transform .28s ease, box-shadow .28s ease;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--color-surface) 86%, transparent) 0%, color-mix(in srgb, var(--color-primary) 10%, transparent) 100%);
+    backdrop-filter: blur(12px) saturate(120%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
+    padding: 1rem;
+    box-shadow: 0 18px 44px color-mix(in srgb, var(--color-primary) 12%, transparent), inset 0 0 18px color-mix(in srgb, var(--color-primary) 6%, transparent);
+  }
+
+  .skills-card .skill-item { width: 100%; }
+
+  .skill-bar {
+    height: 10px;
+    background: color-mix(in srgb, var(--color-muted) 58%, transparent);
+    border-radius: 999px;
+    overflow: hidden;
+    box-shadow: inset 0 -6px 12px rgba(0,0,0,0.45);
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--color-highlight) 85%, transparent) 0%, color-mix(in srgb, var(--color-primary) 85%, transparent) 100%);
+    box-shadow: 0 8px 28px color-mix(in srgb, var(--color-highlight) 40%, transparent), inset 0 -6px 12px rgba(0,0,0,0.18);
+    border-radius: 999px;
+    transition: width .6s cubic-bezier(.2,.9,.2,1);
+  }
+
+  /* Expertise badges */
+  .skill-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--color-primary-foreground);
+    border: 1px solid transparent;
+  }
+
+  .skill-badge--expert {
+    background: var(--color-highlight);
+    color: #fff;
+    border-color: color-mix(in srgb, var(--color-highlight) 40%, transparent);
+    box-shadow: 0 8px 28px color-mix(in srgb, var(--color-highlight) 40%, transparent);
+  }
+
+  .skill-badge--advanced {
+    background: linear-gradient(90deg, color-mix(in srgb, var(--color-primary) 60%, transparent), color-mix(in srgb, var(--color-primary) 30%, transparent));
+    color: var(--color-primary-foreground);
+    border-color: color-mix(in srgb, var(--color-primary) 36%, transparent);
+  }
+
+  .skill-badge--intermediate {
+    background: color-mix(in srgb, var(--color-primary) 16%, transparent);
+    color: var(--color-primary-foreground);
+    border-color: color-mix(in srgb, var(--color-primary) 18%, transparent);
+  }
+
+  /* header separator between icon and title */
+  .header-sep {
+    width: 1px;
+    height: 28px;
+    background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+    opacity: 0.45;
+    border-radius: 2px;
+    margin-right: 0.6rem;
+  }
+
+  /* Hover glow helper used elsewhere */
+  .hover-glow:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 24px 64px color-mix(in srgb, var(--color-highlight) 40%, transparent), inset 0 0 18px color-mix(in srgb, var(--color-primary) 10%, transparent);
+  }
+
+  @media (max-width: 1023px) {
+    .skills-card { padding: 0.85rem; }
+  }
+
+  .hero-tech-pill {
+    border-radius: 9999px;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    background: color-mix(in srgb, var(--color-primary) 18%, transparent);
+    color: var(--color-primary-foreground);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 32%, transparent);
+  }
+
+  /* Projects: horizontal scroller and cards */
+  .projects-row {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    
+    /* Create cushion for hover glows so they don't clip */
+    padding-top: 4rem;
+    padding-bottom: 7rem;
+    /* Pull container back so layout flow isn't disrupted */
+    margin-top: -4rem;
+    margin-bottom: -7rem;
+    
+    /* Lateral breathing room: Counter-margin (-4rem) + Button space (6rem) + Gap (2rem) = ~12rem padding */
+    padding-inline: 12rem;
+    margin-inline: -4rem;
+    
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    
+    /* Stretch cards to same height */
+    align-items: stretch;
+  }
+
+  /* hide native scrollbars but allow scrolling */
+  .projects-row::-webkit-scrollbar { height: 8px; display: none; }
+  .projects-row { scrollbar-width: none; -ms-overflow-style: -ms-autohiding-scrollbar; }
+
+  .project-card {
+    /* Fixed-size project cards to ensure consistent layout */
+    /* Widen cards to show larger previews while keeping three visible per viewport */
+    flex: 0 0 calc(36% - 1.25rem);
+    min-width: 420px;
+    /* Total card height: keep bottom/content area stable, shrink from the top (image) */
+    height: 560px;
+    scroll-snap-align: center;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 88%, transparent) 0%, color-mix(in srgb, var(--color-primary) 6%, transparent) 100%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+    box-shadow: 0 18px 48px color-mix(in srgb, var(--color-primary) 10%, transparent), inset 0 0 16px color-mix(in srgb, var(--color-primary) 4%, transparent);
+    transition: transform .32s ease, box-shadow .32s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card:hover { 
+    transform: translateY(-8px); 
+    box-shadow: 0 28px 68px color-mix(in srgb, var(--color-highlight) 30%, transparent);
+    /* Ensure glow renders above everything including scroll buttons */
+    position: relative;
+    z-index: 70;
+  }
+
+  /* image area - reduced so the bottom content keeps its original space */
+  .project-image-wrap { position: relative; width: 100%; height: 280px; overflow: hidden; background: var(--color-card); }
+  .project-image-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center; display:block; transform-origin: center center; transition: transform .6s cubic-bezier(.2,.9,.2,1); }
+  .project-card:hover .project-image-wrap img { transform: scale(1.08); }
+
+  .project-techs { display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.5rem; }
+  .project-tech { display:inline-flex; align-items:center; gap:0.5rem; padding:0.35rem 0.6rem; border-radius:999px; background: color-mix(in srgb, var(--color-surface) 72%, transparent); border:1px solid color-mix(in srgb, var(--color-primary) 12%, transparent); color:var(--color-highlight); font-weight:600; font-size:0.8rem; }
+  .project-tech svg { width:18px; height:18px; color:inherit; }
+
+  /* Filter pills with glow when active */
+  .filter-bar { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.25rem; position: relative; z-index: 20; }
+  .filter-pill { padding:0.55rem 1rem; border-radius:9999px; background: color-mix(in srgb, var(--color-surface) 84%, transparent); border:1px solid color-mix(in srgb, var(--color-primary) 12%, transparent); color:var(--color-muted-foreground); transition: all .22s ease; }
+  .filter-pill:hover { transform: translateY(-3px); box-shadow: 0 18px 48px color-mix(in srgb, var(--color-highlight) 18%, transparent); color:var(--color-primary-foreground); }
+  .filter-pill.active { background: linear-gradient(90deg, color-mix(in srgb, var(--color-highlight) 18%, transparent), color-mix(in srgb, var(--color-primary) 12%, transparent)); color: #fff; box-shadow: 0 18px 64px color-mix(in srgb, var(--color-highlight) 36%, transparent); }
+
+  @media (max-width: 1023px) {
+    .project-card { flex: 0 0 92%; min-width: 260px; }
+    .project-image-wrap { height: 240px; }
+    .project-card { height: 520px; }
+  }
+
+  /* Ticker styles for About section */
+  .ticker {
+    overflow: hidden;
+    width: 100%;
+    
+    /* Create cushion for hover glows so they don't clip */
+    padding-top: 4rem;
+    padding-bottom: 7rem;
+    /* Pull container back so layout flow isn't disrupted */
+    margin-top: -3.4rem;
+    margin-bottom: -7rem;
+
+    /* Soften horizontal edges */
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+
+    /* make container visually subtle so items look like individual cards */
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .ticker-track {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding-left: 0.25rem;
+    /* duration and distance are computed at runtime and set as CSS vars */
+    animation: ticker var(--ticker-duration, 20s) linear infinite;
+  }
+
+
+  .ticker-item {
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-foreground);
+    padding: 1.2rem 1.1rem;
+    border-radius: 14px;
+    /* subtle glass so it blends with background */
+    background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+    backdrop-filter: blur(6px) saturate(120%);
+    border: 1px solid transparent;
+    box-shadow: inset 0 -6px 18px rgba(0,0,0,0.45);
+    transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
+    display: inline-flex;
+    align-items: center;
+    pointer-events: auto;
+    font-size: 1.125rem;
+    min-width: 180px; /* make cards less wide */
+    min-height: 96px;
+    justify-content: flex-start;
+  }
+
+  .ticker-item svg {
+    width: 48px; /* slightly smaller icons */
+    height: 48px;
+    color: var(--color-primary);
+  }
+
+  .ticker-item:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 28px 72px color-mix(in srgb, var(--color-highlight) 34%, transparent);
+    border-color: color-mix(in srgb, var(--color-highlight) 16%, transparent);
+    background: color-mix(in srgb, var(--color-surface) 86%, transparent);
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(var(--ticker-distance, -50%)); }
+  }
+
+  @media (max-width: 1023px) {
+    .ticker-track { animation-duration: 28s; }
+  }
+
+  /* Card body fills remaining card height and keeps layout stable */
+  .project-card .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem; /* keep shared with p-6 but explicit here */
+    flex: 0 0 auto;
+    /* preserve bottom/content area height so description/details don't shrink */
+    min-height: 280px;
+    overflow: hidden;
+  }
+
+  .project-card .card-body p {
+    margin: 0;
+    color: var(--color-muted-foreground);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    /* prevent description from expanding card */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* viewport wrapper - allow overflow for glow visibility, row handles scrolling */
+  .projects-viewport {
+    position: relative;
+    /* Remove padding that restricted width unnecessarily */
+    padding: 0;
+    /* Essential: Allow the glow to bleed out of this wrapper */
+    overflow: visible; 
+  }
+
+  /* scroll buttons */
+  .projects-scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--color-surface) 78%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--color-primary) 12%, transparent);
+    color: var(--color-foreground);
+    cursor: pointer;
+    z-index: 60;
+  }
+
+  .projects-scroll-btn.left { left: 6px; }
+  .projects-scroll-btn.right { right: 6px; }
+
+  .projects-scroll-btn:hover { transform: translateY(-50%) translateX(2px) scale(1.02); box-shadow: 0 22px 56px color-mix(in srgb, var(--color-highlight) 28%, transparent); }
+
+  @media (max-width: 1023px) {
+    .hero-tech-panel {
+      position: relative;
+      bottom: auto;
+      right: auto;
+      margin-top: 2.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-tech-pill {
+      letter-spacing: 0.22em;
+    }
   }
 
   .status-success {
@@ -219,6 +1110,18 @@ section[id="contact"] > .container {
     }
   }
 
+  @keyframes orb-pulse {
+    0%,
+    100% {
+      transform: scale(0.92) translateY(0);
+      opacity: 0.75;
+    }
+    50% {
+      transform: scale(1.05) translateY(-14px);
+      opacity: 1;
+    }
+  }
+
   @keyframes marquee {
     0% {
       transform: translateX(0);
@@ -277,6 +1180,15 @@ section[id="contact"] > .container {
     }
   }
 
+  @keyframes segmented-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
   .group:hover .animated-border-path {
     animation: animated-border 1.5s linear infinite;
   }
@@ -291,5 +1203,58 @@ section[id="contact"] > .container {
     box-shadow: 0 0 40px
         color-mix(in srgb, var(--color-primary) 35%, transparent),
       0 0 80px color-mix(in srgb, var(--color-primary) 25%, transparent);
+  }
+
+  /* Rotating gradient ring for profile images (thin border only) */
+  .rotating-border {
+    --thickness: 8px;
+    position: relative;
+    display: inline-block;
+    border-radius: 1.25rem;
+  }
+
+  /* conic gradient sits behind the inner content; inner covers the center so only a ring is visible */
+  .rotating-border::before {
+    content: "";
+    position: absolute;
+    inset: calc(-1 * var(--thickness));
+    z-index: 1;
+    border-radius: calc(1.25rem + var(--thickness));
+    background: conic-gradient(
+      from 0deg,
+      color-mix(in srgb, var(--color-primary) 70%, transparent) 0deg,
+      color-mix(in srgb, var(--color-highlight) 80%, transparent) 90deg,
+      color-mix(in srgb, var(--color-primary) 60%, transparent) 180deg,
+      color-mix(in srgb, var(--color-highlight) 60%, transparent) 270deg,
+      color-mix(in srgb, var(--color-primary) 70%, transparent) 360deg
+    );
+    background-size: 200% 200%;
+    pointer-events: none;
+    /* subtle glow */
+    filter: saturate(120%);
+    animation: spin-ring 12s linear infinite;
+  }
+
+  /* inner container covers center so only the border ring shows */
+  .rotating-border > .inner {
+    position: relative;
+    z-index: 3;
+    border-radius: inherit;
+    overflow: hidden;
+    background: var(--color-surface);
+    padding: calc(var(--thickness) + 4px);
+  }
+
+  /* Non-linear spin that eases and briefly speeds around corner points */
+  @keyframes spin-ring {
+    0% { transform: rotate(0deg); }
+    18% { transform: rotate(70deg); }
+    25% { transform: rotate(100deg); }
+    43% { transform: rotate(170deg); }
+    50% { transform: rotate(200deg); }
+    68% { transform: rotate(270deg); }
+    75% { transform: rotate(300deg); }
+    93% { transform: rotate(350deg); }
+    100% { transform: rotate(360deg); }
   }
 }

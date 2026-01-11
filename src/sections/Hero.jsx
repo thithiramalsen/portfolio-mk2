@@ -6,95 +6,89 @@ import {
   Linkedin,
   Twitter,
   Download,
+  BadgeCheck,
 } from "lucide-react";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiNodedotjs,
+  SiGraphql,
+  SiTailwindcss,
+} from "react-icons/si";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
-const skills = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Node.js",
-  "GraphQL",
-  "PostgreSQL",
-  "MongoDB",
-  "Redis",
-  "Docker",
-  "AWS",
-  "Vercel",
-  "Tailwind CSS",
-  "Prisma",
-  "Jest",
-  "Cypress",
-  "Figma",
-  "Git",
-  "GitHub Actions",
+const heroStats = [
+  { value: "4+", label: "ML & AI Projects" },
+  { value: "10+", label: "Tech Stacks used" },
+  { value: "3.56", label: "Academic G.P.A" },
+  { value: "Data Science", label: "Focus Area" },
+];
+
+const showcaseTech = [
+  { id: "react", Icon: SiReact, alt: "React" },
+  { id: "nextjs", Icon: SiNextdotjs, alt: "Next.js" },
+  { id: "ts", Icon: SiTypescript, alt: "TypeScript" },
+  { id: "node", Icon: SiNodedotjs, alt: "Node.js" },
+  { id: "graphql", Icon: SiGraphql, alt: "GraphQL" },
+  { id: "tailwind", Icon: SiTailwindcss, alt: "Tailwind CSS" },
+];
+
+const socialLinks = [
+  { icon: Github, href: "#", label: "GitHub" },
+  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Twitter, href: "#", label: "Twitter" },
 ];
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Bg */}
-      <div className="absolute inset-0">
-        <img
-          src="/hero-bg.jpg"
-          alt="Hero image"
-          className="w-full h-full object-cover opacity-40"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/80 to-background" />
+    <section className="relative min-h-[78vh] lg:min-h-[88vh] flex items-center overflow-visible">
+      <div className="absolute inset-0 hero-gradient" />
+      <div className="absolute inset-0 hero-fireflies pointer-events-none" aria-hidden="true">
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
+        <span className="firefly" />
       </div>
+      <div className="absolute inset-0 hero-noise" aria-hidden="true" />
 
-      {/* Green Dots */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1.5 h-1.5 rounded-full opacity-70"
-            style={{
-              backgroundColor: "var(--color-primary)",
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `slow-drift ${
-                15 + Math.random() * 20
-              }s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 5}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Content */}
-      <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text Content */}
-          <div className="space-y-8">
-            <div className="animate-fade-in">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs tracking-[0.3em] uppercase text-primary">
-                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                Software Engineer • React Specialist
+      <div className="container mx-auto px-6 pt-20 pb-12 relative z-10">
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]">
+          <div className="space-y-8 lg:pr-10 max-w-[980px] pl-4 md:pl-8 lg:pl-12">
+            <div className="inline-flex items-center gap-3 hero-badge animate-fade-in">
+              <span className="hero-badge-icon">
+                <BadgeCheck className="w-4 h-4" />
+              </span>
+              <span className="text-xs uppercase tracking-[0.38em]">DATA SCIENCE · AI </span>
+              <span className="hidden sm:inline text-xs uppercase tracking-[0.38em] text-primary-foreground/70">
+                · FULL-STACK DEVELOPMENT
               </span>
             </div>
 
-            {/* Headline */}
-            <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
-                Crafting <span className="text-primary glow-text">digital</span>
-                <br />
-                experiences with
-                <br />
-                <span className="font-serif italic font-normal text-primary-foreground/80">
-                  precision.
+            <div className="space-y-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-fade-in animation-delay-100 max-w-none">
+                <span className="inline-block whitespace-nowrap">Data Science & AI Developer</span>
+                <br className="hidden md:block" />
+                <span className="block text-xl md:text-2xl lg:text-3xl font-medium mt-2 max-w-[880px] text-[#ffb84d]">
+                  Portfolio
                 </span>
               </h1>
-              <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
-                Hi, I'm Thithira Malsen — a software engineer specializing in
-                React, Next.js, and TypeScript. I build scalable, performant web
-                applications that users love.
+
+              <p className="text-lg md:text-xl text-muted-foreground max-w-[880px] animate-fade-in animation-delay-200">
+               Building intelligent systems where data, code, and automation come together.
               </p>
             </div>
 
-            {/* CTAs */}
             <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
-              <Button size="lg" href="#contact">
+              <Button size="default" href="#contact" className="px-8">
                 Contact Me <ArrowRight className="w-5 h-5" />
               </Button>
               <AnimatedBorderButton>
@@ -103,93 +97,81 @@ export const Hero = () => {
               </AnimatedBorderButton>
             </div>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
-              <span className="text-sm text-muted-foreground">Follow me: </span>
-              {[
-                { icon: Github, href: "#" },
-                { icon: Linkedin, href: "#" },
-                { icon: Twitter, href: "#" },
-              ].map((social, idx) => (
-                <a
-                  key={idx}
-                  href={social.href}
-                  className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300"
-                >
-                  {<social.icon className="w-5 h-5" />}
-                </a>
+            <div className="flex items-center gap-6 animate-fade-in animation-delay-400 hero-stats-clean">
+              {heroStats.map((stat, idx) => (
+                <div
+                  key={stat.label}
+                  className={`hero-stat hero-stat-simple ${idx !== heroStats.length - 1 ? "stat-divider" : ""}`}>
+                  <span className="hero-stat-value">{stat.value}</span>
+                  <span className="hero-stat-label">{stat.label}</span>
+                </div>
               ))}
             </div>
-          </div>
-          {/* Right Column - Profile Image */}
-          <div className="relatice animate-fade-in animation-delay-300">
-            {/* Profile Image */}
-            <div className="relative max-w-md mx-auto">
-              <div
-                className="absolute inset-0 
-              rounded-3xl bg-gradient-to-br 
-              from-primary/30 via-transparent 
-              to-primary/10 blur-2xl animate-pulse"
-              />
-              <div className="relative glass rounded-3xl p-2 glow-border">
-                <img
-                  src="/profile-photo.jpg"
-                  alt="Pedro Machado"
-                  className="w-full aspect-[4/5] object-cover rounded-2xl"
-                />
 
-                {/* Floating Badge */}
-                <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float">
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-primary rounded-full animate-pulse" />
-                    <span className="text-sm font-medium">
-                      Available for work
-                    </span>
-                  </div>
-                </div>
-                {/* Stats Badge */}
-                <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float animation-delay-500">
-                  <div className="text-2xl font-bold text-primary">5+</div>
-                  <div className="text-xs text-muted-foreground">
-                    Years Exp.
-                  </div>
-                </div>
+            <div className="flex flex-wrap items-center gap-5 animate-fade-in animation-delay-500">
+              <span className="text-sm text-muted-foreground">Find me online</span>
+              <div className="flex items-center gap-3">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="hero-social"
+                  >
+                    <social.icon className="w-5 h-5" />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Skills Section */}
-        <div className="mt-20 animate-fade-in animation-delay-600">
-          <p className="text-sm text-muted-foreground mb-6 text-center">
-            Technologies I work with
-          </p>
-          <div className="relative overflow-hidden">
-            <div
-              className="absolute left-0 top-0 bottom-0 w-32
-             bg-gradient-to-r from-background to-transparent z-10"
-            />
-            <div
-              className="absolute right-0 top-0 bottom-0 w-32
-             bg-gradient-to-l from-background to-transparent z-10"
-            />
-            <div className="flex animate-marquee">
-              {[...skills, ...skills].map((skill, idx) => (
-                <div key={idx} className="flex-shrink-0 px-8 py-4">
-                  <span className="text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
-                    {skill}
-                  </span>
+            <div className="relative flex justify-center lg:justify-end">
+            <div className="hero-orb" aria-hidden="true" />
+              <div className="segmented-frame animate-fade-in animation-delay-300 max-w-[420px] w-full">
+              <div className="border-segments" aria-hidden="true">
+                <span className="border-segment seg-tl-h" />
+                <span className="border-segment seg-tl-v" />
+                <span className="border-segment seg-tr-h" />
+                <span className="border-segment seg-tr-v" />
+                <span className="border-segment seg-bl-h" />
+                <span className="border-segment seg-bl-v" />
+                <span className="border-segment seg-br-h" />
+                <span className="border-segment seg-br-v" />
+              </div>
+
+              <div className="inner glass">
+                <img
+                  src="/profile-photo.jpg"
+                  alt="Pedro Machado"
+                  className="w-full max-w-[420px] md:max-w-[480px] aspect-[3/4] object-cover rounded-[1rem] mx-auto"
+                />
+
+                <div className="hero-floating-card hero-floating-card--top-left">
+                  <div className="text-xl font-bold text-primary">2+</div>
+                  <div className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+                    Years Exp.
+                  </div>
                 </div>
-              ))}
+
+                <div className="hero-floating-card hero-floating-card--top-right">
+                  <div className="flex items-center gap-3">
+                    <span className="w-3 h-3 rounded-full bg-primary animate-pulse" />
+                    <span className="text-sm font-medium">Available for work</span>
+                  </div>
+                </div>
+                </div>
+
+                <div className="hero-tech-panel animate-fade-in animation-delay-500">
+                    {showcaseTech.map((tech) => (
+                      <tech.Icon key={tech.id} className="hero-tech-icon" title={tech.alt} />
+                    ))}
+                </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 
-      animate-fade-in animation-delay-800"
-      >
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in animation-delay-800">
         <a
           href="#about"
           className="z-20 flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"

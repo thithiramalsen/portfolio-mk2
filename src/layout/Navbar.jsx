@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const navLinks = [
   { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
   { href: "#testimonials", label: "Testimonials" },
@@ -27,14 +28,16 @@ export const Navbar = () => {
     <header
       className={`fixed top-0 left-0 right-0 transition-all duration-500 ${
         isScrolled ? "glass-strong py-3" : "bg-transparent py-5"
-      }  z-50`}
+      }  z-[100]`}
     >
       <nav className="container mx-auto px-6 flex items-center justify-between">
         <a
           href="#"
-          className="text-xl font-bold tracking-tight hover:text-primary"
+          className="flex items-center gap-2 text-xl font-bold tracking-tight hover:text-primary"
         >
-          TM<span className="text-primary">.</span>
+          <span className="text-primary text-3xl leading-none">&lt;</span>
+          <span className="uppercase tracking-[0.32em] text-lg md:text-xl tm-logo">TM</span>
+          <span className="text-primary text-3xl leading-none">/&gt;</span>
         </a>
 
         {/* Desktop Nav */}
