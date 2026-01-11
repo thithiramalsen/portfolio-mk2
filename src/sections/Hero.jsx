@@ -91,7 +91,7 @@ export const Hero = () => {
               <Button size="default" href="#projects" className="px-8">
                 View Projects <ArrowRight className="w-5 h-5" />
               </Button>
-              <AnimatedBorderButton>
+              <AnimatedBorderButton as="a" href="/Thithira_Malsen_CV.pdf" download className="px-6">
                 <Download className="w-5 h-5" />
                 Download CV
               </AnimatedBorderButton>
