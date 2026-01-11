@@ -1,5 +1,12 @@
 import { Code2, Lightbulb, Rocket, Users } from "lucide-react";
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs, SiMongodb } from "react-icons/si";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiMongodb,
+} from "react-icons/si";
 
 const highlights = [
   {
@@ -112,7 +119,7 @@ export const About = () => {
               { id: "mongo", label: "MongoDB", Icon: SiMongodb },
             ].map((tech) => (
               <div key={tech.id} className="tech-card">
-                <tech.Icon className="tech-card-icon" />
+                <tech.Icon className="tech-card-icon" aria-hidden="true" />
                 <div className="mt-3 text-sm text-muted-foreground">{tech.label}</div>
               </div>
             ))}

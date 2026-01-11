@@ -75,15 +75,17 @@ export const Hero = () => {
 
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-fade-in animation-delay-100 max-w-none">
-                <span className="inline-block whitespace-nowrap">React.js Developer</span>
+                <span className="inline-block whitespace-nowrap">Data Science & AI Developer</span>
                 <br className="hidden md:block" />
-                <span className="inline-block">Portfolio</span>
+                <span className="block text-xl md:text-2xl lg:text-3xl font-medium mt-2 max-w-[880px] text-[#ffb84d]">
+                  Building intelligent systems where data, code, and automation come together.
+                </span>
               </h1>
 
               <p className="text-lg md:text-xl text-muted-foreground max-w-[880px] animate-fade-in animation-delay-200">
-                Building modern, scalable web applications with React, JavaScript,
-                and cutting-edge technologies. Transforming ideas into exceptional
-                digital experiences.
+               I’m a third-year Data Science undergraduate with hands-on experience in machine learning,
+               AI-powered applications, and full-stack development. I enjoy turning messy data
+               and abstract ideas into systems that actually work.
               </p>
             </div>
 
