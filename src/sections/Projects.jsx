@@ -22,42 +22,42 @@ const projects = [
     description:
       "Machine learning system that predicts whether a song will become a hit using Spotify audio features.",
     image: "/projects/project1.png",
-    tags: ["React", "Typescript", "NodeJS"],
-    techIcons: [SiReact, SiTypescript, SiNodedotjs],
-    category: "Web Apps",
+    tags: ["Machine Learning", "Data Mining", "Case Study"],
+    techIcons: [SiPython, SiPostgresql, SiReact],
+    category: "Machine Learning",
     link: "#",
     github: "#",
   },
   {
-    title: "E-Commerce Platform",
+    title: "MinuteMe — AI Meeting Assistant",
     description:
-      "A full-featured e-commerce solution with inventory management, payment processing, and analytics dashboard.",
+      "AI-powered assistant that automates transcription, summarization, and meeting minutes generation.",
     image: "/projects/project2.png",
-    tags: ["Next.js", "Stripe", "PostgreSQL", "Tailwind"],
-    techIcons: [SiNextdotjs, SiStripe, SiPostgresql, SiTailwindcss],
-    category: "Full Stack",
+    tags: ["AI", "NLP", "LLMs"],
+    techIcons: [SiOpenai, SiPython, SiNodedotjs],
+    category: "AI",
     link: "#",
     github: "#",
   },
   {
-    title: "AI Writing Assistant",
+    title: "AnyHire.lk — Job Platform",
     description:
-      "An intelligent writing tool powered by GPT-4, helping users create better content faster.",
+      "Full-stack platform connecting part-time job seekers with customers based on location and category.",
     image: "/projects/project3.png",
-    tags: ["React", "OpenAI", "Python", "FastAPI"],
-    techIcons: [SiReact, SiOpenai, SiPython],
-    category: "Web Apps",
+    tags: ["Full Stack", "MERN", "In Progress"],
+    techIcons: [SiReact, SiNodedotjs, SiMongodb],
+    category: "Full Stack",
     link: "#",
     github: "#",
   },
   {
-    title: "Project Management Tool",
+    title: "Data Warehouse Project",
     description:
-      "A collaborative workspace for teams with real-time updates, task tracking, and integrations.",
+      "Analytical data warehouse designed for structured reporting and decision support.",
     image: "/projects/project4.png",
-    tags: ["Next.js", "Socket.io", "MongoDB", "Redis"],
-    techIcons: [SiNextdotjs, SiMongodb, SiRedis],
-    category: "Full Stack",
+    tags: ["Data Engineering", "Analytics", "Case Study"],
+    techIcons: [SiPostgresql, SiRedis, SiPython],
+    category: "Data Engineering",
     link: "#",
     github: "#",
   },
@@ -75,7 +75,7 @@ export const Projects = () => {
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, [rowRef]);
-  const categories = ["All", "Web Apps", "Full Stack"];
+  const categories = ["All", "Machine Learning", "AI", "Full Stack", "Data Engineering"];
   const filtered = projects.filter(
     (p) => category === "All" || p.category === category
   );
