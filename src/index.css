@@ -86,6 +86,110 @@
     box-shadow: 0 0 32px color-mix(in srgb, var(--color-primary) 18%, transparent);
   }
 
+  /* lighter glass for small icon buttons */
+  .glass-light {
+    background-color: color-mix(in srgb, var(--color-surface) 48%, transparent);
+    backdrop-filter: blur(10px);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 14%, transparent);
+    box-shadow: 0 8px 28px color-mix(in srgb, var(--color-primary) 8%, transparent);
+    color: var(--color-foreground);
+  }
+
+  /* small icon button helper */
+  .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 0.75rem;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease, opacity .18s ease;
+  }
+
+  .btn-icon:hover {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 22px 64px color-mix(in srgb, var(--color-highlight) 28%, transparent), 0 6px 18px color-mix(in srgb, var(--color-primary) 18%, transparent) inset;
+  }
+
+  /* contrasting button style for project actions */
+  .btn-contrast {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-foreground) 6%, transparent), color-mix(in srgb, var(--color-surface) 12%, transparent));
+    color: var(--color-foreground);
+    border: 1px solid color-mix(in srgb, var(--color-highlight) 22%, transparent);
+    box-shadow: 0 8px 28px color-mix(in srgb, var(--color-highlight) 30%, transparent);
+    backdrop-filter: blur(8px);
+  }
+
+  .btn-contrast:focus {
+    outline: 2px solid color-mix(in srgb, var(--color-highlight) 45%, transparent);
+    outline-offset: 2px;
+  }
+
+  /* Slightly reduce overlay fade to keep buttons visible on touch */
+  .project-image-wrap .btn-contrast { opacity: 0.98; }
+
+  /* Make icons white and glowing inside contrast buttons */
+  .btn-contrast svg { color: #ffffff; filter: drop-shadow(0 6px 18px rgba(255,76,53,0.28)); }
+
+  /* Scroll trigger zones (invisible) to reveal scroll buttons when hovered in vicinity */
+  .scroll-trigger {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 80%;
+    width: 20%;
+    max-width: 14rem;
+    /* low z so buttons (higher z) still receive clicks */
+    z-index: 100;
+    /* allow hover to trigger parent :hover */
+    pointer-events: auto;
+    background: transparent;
+  }
+  .scroll-trigger.left { left: 0; }
+  .scroll-trigger.right { right: 0; }
+
+  /* Make scroll buttons larger and appear when hovering the entire scroller or trigger zones */
+  .projects-scroll-btn {
+    opacity: 0 !important;
+    transition: opacity .12s ease, transform .12s ease, box-shadow .12s ease !important;
+    width: 6rem !important; /* ~96px */
+    height: 6rem !important;
+    border-radius: 1rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.0rem !important;
+    /* High priority z-index to ensure they are clickable over cards */
+    z-index: 2000 !important;
+    /* Raise slightly higher to avoid conflict with bottom-right project buttons */
+    top: 45%; 
+    transform: translateY(-50%);
+    /* Glass style for big buttons */
+    background: color-mix(in srgb, var(--color-surface) 68%, transparent) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 20%, transparent) !important;
+    color: var(--color-foreground) !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+  }
+
+  /* Reveal buttons when hovering the wrapper (including triggers) */
+  .relative:hover .projects-scroll-btn { opacity: 1 !important; }
+
+  .projects-scroll-btn.left { left: 1rem !important; }
+  .projects-scroll-btn.right { right: 1rem !important; }
+  
+  /* Bigger icons inside scroll buttons */
+  .projects-scroll-btn svg { width: 36px !important; height: 36px !important; stroke-width: 2 !important; }
+
+  .projects-scroll-btn:hover { 
+    /* Keep centering transform, add scale */
+    transform: translateY(-50%) scale(1.04); 
+    box-shadow: 0 28px 72px color-mix(in srgb, var(--color-highlight) 36%, transparent); 
+    border-color: color-mix(in srgb, var(--color-highlight) 40%, transparent); 
+    color: var(--color-highlight); 
+  }
+
   .glow-text {
     text-shadow: 0 0 36px
       color-mix(in srgb, var(--color-primary) 60%, transparent);
@@ -657,6 +761,111 @@
     color: var(--color-primary-foreground);
     border: 1px solid color-mix(in srgb, var(--color-primary) 32%, transparent);
   }
+
+  /* Projects: horizontal scroller and cards */
+  .projects-row {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    
+    /* Create cushion for hover glows so they don't clip */
+    padding-top: 4rem;
+    padding-bottom: 7rem;
+    /* Pull container back so layout flow isn't disrupted */
+    margin-top: -4rem;
+    margin-bottom: -7rem;
+    
+    /* Lateral breathing room: Counter-margin (-4rem) + Button space (6rem) + Gap (2rem) = ~12rem padding */
+    padding-inline: 12rem;
+    margin-inline: -4rem;
+    
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    
+    /* Center cards */
+    align-items: center;
+  }
+
+  /* hide native scrollbars but allow scrolling */
+  .projects-row::-webkit-scrollbar { height: 8px; display: none; }
+  .projects-row { scrollbar-width: none; -ms-overflow-style: -ms-autohiding-scrollbar; }
+
+  .project-card {
+    /* Adjusted flex basis assuming reduced width due to padding */
+    /* (100% - gaps) / 3 cards. If container width is compressed effectively, we need to ensure they don't get too small */
+    flex: 0 0 calc(33.333% - 1.25rem);
+    min-width: 320px;
+    scroll-snap-align: center;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 88%, transparent) 0%, color-mix(in srgb, var(--color-primary) 6%, transparent) 100%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+    box-shadow: 0 18px 48px color-mix(in srgb, var(--color-primary) 10%, transparent), inset 0 0 16px color-mix(in srgb, var(--color-primary) 4%, transparent);
+    transition: transform .32s ease, box-shadow .32s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card:hover { 
+    transform: translateY(-8px); 
+    box-shadow: 0 28px 68px color-mix(in srgb, var(--color-highlight) 30%, transparent);
+    /* Ensure glow renders above everything including scroll buttons */
+    position: relative;
+    z-index: 70;
+  }
+
+  /* make images square and larger */
+  .project-image-wrap { position: relative; width: 100%; height: 360px; overflow: hidden; }
+  .project-image-wrap img { width: 100%; height: 100%; object-fit: cover; display:block; transform-origin: center center; transition: transform .6s cubic-bezier(.2,.9,.2,1); }
+  .project-card:hover .project-image-wrap img { transform: scale(1.08); }
+
+  .project-techs { display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.5rem; }
+  .project-tech { display:inline-flex; align-items:center; gap:0.5rem; padding:0.35rem 0.6rem; border-radius:999px; background: color-mix(in srgb, var(--color-surface) 72%, transparent); border:1px solid color-mix(in srgb, var(--color-primary) 12%, transparent); color:var(--color-highlight); font-weight:600; font-size:0.8rem; }
+  .project-tech svg { width:18px; height:18px; color:inherit; }
+
+  /* Filter pills with glow when active */
+  .filter-bar { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.25rem; position: relative; z-index: 20; }
+  .filter-pill { padding:0.55rem 1rem; border-radius:9999px; background: color-mix(in srgb, var(--color-surface) 84%, transparent); border:1px solid color-mix(in srgb, var(--color-primary) 12%, transparent); color:var(--color-muted-foreground); transition: all .22s ease; }
+  .filter-pill:hover { transform: translateY(-3px); box-shadow: 0 18px 48px color-mix(in srgb, var(--color-highlight) 18%, transparent); color:var(--color-primary-foreground); }
+  .filter-pill.active { background: linear-gradient(90deg, color-mix(in srgb, var(--color-highlight) 18%, transparent), color-mix(in srgb, var(--color-primary) 12%, transparent)); color: #fff; box-shadow: 0 18px 64px color-mix(in srgb, var(--color-highlight) 36%, transparent); }
+
+  @media (max-width: 1023px) {
+    .project-card { flex: 0 0 80%; min-width: 260px; }
+    .project-image-wrap { height: 300px; }
+  }
+
+  /* viewport wrapper - allow overflow for glow visibility, row handles scrolling */
+  .projects-viewport {
+    position: relative;
+    /* Remove padding that restricted width unnecessarily */
+    padding: 0;
+    /* Essential: Allow the glow to bleed out of this wrapper */
+    overflow: visible; 
+  }
+
+  /* scroll buttons */
+  .projects-scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--color-surface) 78%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--color-primary) 12%, transparent);
+    color: var(--color-foreground);
+    cursor: pointer;
+    z-index: 60;
+  }
+
+  .projects-scroll-btn.left { left: 6px; }
+  .projects-scroll-btn.right { right: 6px; }
+
+  .projects-scroll-btn:hover { transform: translateY(-50%) translateX(2px) scale(1.02); box-shadow: 0 22px 56px color-mix(in srgb, var(--color-highlight) 28%, transparent); }
 
   @media (max-width: 1023px) {
     .hero-tech-panel {
