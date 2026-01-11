@@ -8,6 +8,14 @@ import {
   Download,
   BadgeCheck,
 } from "lucide-react";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiNodedotjs,
+  SiGraphql,
+  SiTailwindcss,
+} from "react-icons/si";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
 const heroStats = [
@@ -18,12 +26,12 @@ const heroStats = [
 ];
 
 const showcaseTech = [
-  { id: "react", src: "/icons/react.svg", alt: "React" },
-  { id: "nextjs", src: "/icons/nextjs.svg", alt: "Next.js" },
-  { id: "ts", src: "/icons/typescript.svg", alt: "TypeScript" },
-  { id: "node", src: "/icons/nodejs.svg", alt: "Node.js" },
-  { id: "graphql", src: "/icons/graphql.svg", alt: "GraphQL" },
-  { id: "tailwind", src: "/icons/tailwind.svg", alt: "Tailwind CSS" },
+  { id: "react", Icon: SiReact, alt: "React" },
+  { id: "nextjs", Icon: SiNextdotjs, alt: "Next.js" },
+  { id: "ts", Icon: SiTypescript, alt: "TypeScript" },
+  { id: "node", Icon: SiNodedotjs, alt: "Node.js" },
+  { id: "graphql", Icon: SiGraphql, alt: "GraphQL" },
+  { id: "tailwind", Icon: SiTailwindcss, alt: "Tailwind CSS" },
 ];
 
 const socialLinks = [
@@ -154,15 +162,9 @@ export const Hero = () => {
                 </div>
 
                 <div className="hero-tech-panel animate-fade-in animation-delay-500">
-                  {showcaseTech.map((tech) => (
-                    <img
-                      key={tech.id}
-                      src={tech.src}
-                      alt={tech.alt}
-                      title={tech.alt}
-                      className="hero-tech-icon"
-                    />
-                  ))}
+                    {showcaseTech.map((tech) => (
+                      <tech.Icon key={tech.id} className="hero-tech-icon" title={tech.alt} />
+                    ))}
                 </div>
             </div>
           </div>

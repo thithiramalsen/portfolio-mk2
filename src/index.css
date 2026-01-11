@@ -475,6 +475,137 @@
     transform: translateY(0) scale(.96);
   }
 
+  /* Tech cards used in About section */
+  .tech-cards { max-width: 1200px; }
+
+  .tech-card {
+    width: 160px;
+    height: 120px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    transition: transform .28s ease, box-shadow .28s ease;
+    will-change: transform, box-shadow;
+  }
+
+  .tech-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 18px 48px color-mix(in srgb, var(--color-highlight) 40%, transparent), inset 0 0 18px color-mix(in srgb, var(--color-primary) 10%, transparent);
+  }
+
+  .tech-card-icon {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    filter: grayscale(1) sepia(1) hue-rotate(-10deg) saturate(700%) brightness(1);
+    transition: transform .28s ease, filter .28s ease, drop-shadow .28s ease;
+  }
+
+  .tech-card:hover .tech-card-icon {
+    transform: scale(1.18);
+    filter: none;
+    filter: drop-shadow(0 8px 28px color-mix(in srgb, var(--color-highlight) 55%, transparent));
+  }
+
+  @media (max-width: 1023px) {
+    .tech-card { width: 140px; height: 110px; }
+    .tech-card-icon { width: 40px; height: 40px; }
+  }
+
+  /* Skill list icons */
+  .skill-icon { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; }
+
+  .skill-icon-image { width: 28px; height: 28px; display: inline-block; object-fit: contain; color: var(--color-highlight); filter: none; }
+
+  .skill-icon-fallback { display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:6px; background: #f4c542; color:#111; font-weight:700; }
+
+  /* Skills cards (matching green design but in red scheme) */
+  .skills-card {
+    transition: transform .28s ease, box-shadow .28s ease;
+    border-radius: 1rem;
+    /* glass + subtle gradient for morphing surface */
+    background: linear-gradient(135deg, color-mix(in srgb, var(--color-surface) 86%, transparent) 0%, color-mix(in srgb, var(--color-primary) 10%, transparent) 100%);
+    backdrop-filter: blur(10px) saturate(120%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
+    padding: 1rem;
+    box-shadow: 0 18px 40px color-mix(in srgb, var(--color-primary) 12%, transparent), inset 0 0 18px color-mix(in srgb, var(--color-primary) 6%, transparent);
+  }
+
+  .skills-card .skill-item { width: 100%; }
+
+  .skill-bar {
+    height: 8px;
+    background: color-mix(in srgb, var(--color-muted) 60%, transparent);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-highlight), var(--color-primary));
+    box-shadow: 0 8px 26px color-mix(in srgb, var(--color-highlight) 45%, transparent);
+    border-radius: 999px;
+    transition: width .6s cubic-bezier(.2,.9,.2,1);
+  }
+
+  /* Expertise badges */
+  .skill-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--color-primary-foreground);
+    border: 1px solid transparent;
+  }
+
+  .skill-badge--expert {
+    background: var(--color-highlight);
+    color: #fff;
+    border-color: color-mix(in srgb, var(--color-highlight) 40%, transparent);
+    box-shadow: 0 8px 28px color-mix(in srgb, var(--color-highlight) 40%, transparent);
+  }
+
+  .skill-badge--advanced {
+    background: linear-gradient(90deg, color-mix(in srgb, var(--color-primary) 60%, transparent), color-mix(in srgb, var(--color-primary) 30%, transparent));
+    color: var(--color-primary-foreground);
+    border-color: color-mix(in srgb, var(--color-primary) 36%, transparent);
+  }
+
+  .skill-badge--intermediate {
+    background: color-mix(in srgb, var(--color-primary) 16%, transparent);
+    color: var(--color-primary-foreground);
+    border-color: color-mix(in srgb, var(--color-primary) 18%, transparent);
+  }
+
+  /* header separator between icon and title */
+  .header-sep {
+    width: 1px;
+    height: 28px;
+    background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+    opacity: 0.45;
+    border-radius: 2px;
+    margin-right: 0.6rem;
+  }
+
+  /* Hover glow helper used elsewhere */
+  .hover-glow:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 24px 64px color-mix(in srgb, var(--color-highlight) 40%, transparent), inset 0 0 18px color-mix(in srgb, var(--color-primary) 10%, transparent);
+  }
+
+  @media (max-width: 1023px) {
+    .skills-card { padding: 0.85rem; }
+  }
+
   .hero-tech-pill {
     border-radius: 9999px;
     padding: 0.45rem 0.9rem;

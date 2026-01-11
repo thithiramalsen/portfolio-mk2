@@ -1,4 +1,5 @@
 import { Code2, Lightbulb, Rocket, Users } from "lucide-react";
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs, SiMongodb } from "react-icons/si";
 
 const highlights = [
   {
@@ -92,6 +93,27 @@ export const About = () => {
                 <p className="text-sm text-muted-foreground">
                   {item.description}
                 </p>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Tech Stack & Expertise - added at bottom of About */}
+        <div className="mt-20 text-center animate-fade-in">
+          <h3 className="text-2xl md:text-3xl font-semibold text-foreground">Tech Stack & Expertise</h3>
+          <p className="text-muted-foreground mt-2 mb-8">Technologies I work with to build amazing products</p>
+
+          <div className="tech-cards container mx-auto px-6 flex flex-wrap justify-center gap-6">
+            {[
+              { id: "react", label: "React.js", Icon: SiReact },
+              { id: "nextjs", label: "Next.js", Icon: SiNextdotjs },
+              { id: "ts", label: "TypeScript", Icon: SiTypescript },
+              { id: "tailwind", label: "Tailwind CSS", Icon: SiTailwindcss },
+              { id: "node", label: "Node.js", Icon: SiNodedotjs },
+              { id: "mongo", label: "MongoDB", Icon: SiMongodb },
+            ].map((tech) => (
+              <div key={tech.id} className="tech-card">
+                <tech.Icon className="tech-card-icon" />
+                <div className="mt-3 text-sm text-muted-foreground">{tech.label}</div>
               </div>
             ))}
           </div>
